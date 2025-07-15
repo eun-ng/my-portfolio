@@ -1,22 +1,20 @@
-import { NotionProjectProps } from './notion';
 import { Client } from '@notionhq/client';
+
+export interface NotionPropertiesProps {
+  id: string;
+  title: string;
+  description?: string;
+  stacks?: { id: string; name: string; color: string }[];
+  url?: string;
+  github?: string;
+  period?: string;
+}
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export interface NotionProjectProps {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  status: string;
-  url?: string;
-  github?: string;
-  createdTime: string;
-}
-
-export async function getProjects(): Promise<unknown[]> {
+export async function getProjects(): Promise<unknown> {
   try {
     const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -33,15 +31,16 @@ export async function getProjects(): Promise<unknown[]> {
     return response.results?.map((project: unknown) => {
       const properties = project.properties;
 
+      console.debug('properties :::', properties);
+
       return {
         id: project.id,
         title: properties.Name?.title?.[0]?.plain_text || '',
         description: properties.Description?.rich_text?.[0]?.plain_text || '',
-        tags: properties.Tags?.multi_select?.map((tag: unknown) => tag.name) || [],
-        status: properties.Status?.select?.name || '',
-        url: properties.URL?.url || undefined,
+        stacks: properties.Stacks?.multi_select?.map((stack: string[]) => stack) || [],
+        url: properties.NotionDetail?.url || undefined,
         github: properties.GitHub?.url || undefined,
-        createdTime: project.created_time,
+        period: properties.Period?.date,
       };
     });
   } catch (error) {

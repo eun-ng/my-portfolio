@@ -1,0 +1,22 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simple solid background -->
+  <rect width="1200" height="630" fill="#0f172a"/>
+  
+  <!-- Main content -->
+  <g transform="translate(600, 315)">
+    <!-- Name -->
+    <text x="0" y="-15" 
+          font-family="Arial, sans-serif" 
+          font-size="56" 
+          font-weight="bold" 
+          text-anchor="middle" 
+          fill="#f8fafc">남궁은</text>
+    
+    <!-- Title -->
+    <text x="0" y="25" 
+          font-family="Arial, sans-serif" 
+          font-size="28" 
+          text-anchor="middle" 
+          fill="#10b981">Frontend Developer</text>
+  </g>
+</svg>

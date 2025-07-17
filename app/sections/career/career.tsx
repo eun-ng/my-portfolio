@@ -14,7 +14,7 @@ const CAREER_INFO: CareerInfo[] = [
   {
     id: '0',
     jd: 'FrontEnd Developer',
-    company: 'Hustation(휴스테이션)',
+    company: '휴스테이션(Hustation)',
     url: 'https://www.hustation.com/',
     startDate: '2023.02',
     endDate: '2025.02',
@@ -25,11 +25,7 @@ const CAREER_INFO: CareerInfo[] = [
 
 const CareerSection = () => {
   return (
-    <div className="grid gap-4">
-      <div className="flex items-center gap-2 px-6">
-        <div className="w-1 h-6 bg-accent rounded-full"></div>
-        <h1 className="text-2xl font-medium text-foreground">Career</h1>
-      </div>
+    <div id="career" className="grid">
       <CareerClient careerInfo={CAREER_INFO} />
     </div>
   );

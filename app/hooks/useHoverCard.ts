@@ -1,18 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useHoverCard = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
 
   const handleHoverStart = (id: string) => {
-    setHoveredCard(id);
+    if (isDesktop) {
+      setHoveredCard(id);
+    }
   };
 
   const handleHoverEnd = () => {
-    setHoveredCard(null);
+    if (isDesktop) {
+      setHoveredCard(null);
+    }
   };
 
-  const isHovered = (id: string) => hoveredCard === id;
-  const isOtherHovered = (id: string) => hoveredCard && hoveredCard !== id;
+  const isHovered = (id: string) => isDesktop && hoveredCard === id;
+  const isOtherHovered = (id: string) => isDesktop && hoveredCard && hoveredCard !== id;
 
   return {
     hoveredCard,
@@ -20,6 +36,7 @@ const useHoverCard = () => {
     handleHoverEnd,
     isHovered,
     isOtherHovered,
+    isDesktop,
   };
 };
 

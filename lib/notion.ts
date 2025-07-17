@@ -10,11 +10,47 @@ export interface NotionPropertiesProps {
   period?: string;
 }
 
+interface NotionPage {
+  id: string;
+  properties: {
+    Name?: {
+      title?: { plain_text: string }[];
+    };
+    Description?: {
+      rich_text?: { plain_text: string }[];
+    };
+    Stacks?: {
+      multi_select?: { id: string; name: string; color: string }[];
+    };
+    NotionDetail?: {
+      url?: string;
+    };
+    GitHub?: {
+      url?: string;
+    };
+    Period?: {
+      date?: string;
+    };
+  };
+}
+
+const isValidNotionPage = (page: unknown): page is NotionPage => {
+  if (typeof page !== 'object' || page === null) return false;
+
+  const pageObj = page as Record<string, unknown>;
+  return (
+    'id' in pageObj &&
+    'properties' in pageObj &&
+    typeof pageObj.id === 'string' &&
+    typeof pageObj.properties === 'object'
+  );
+};
+
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export async function getProjects(): Promise<unknown> {
+export async function getProjects(): Promise<NotionPropertiesProps[]> {
   try {
     const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -26,23 +62,21 @@ export async function getProjects(): Promise<unknown> {
       database_id: databaseId,
     });
 
-    console.debug('response :::', response);
+    return (
+      response.results?.filter(isValidNotionPage).map((page) => {
+        const properties = page.properties;
 
-    return response.results?.map((project: unknown) => {
-      const properties = project.properties;
-
-      console.debug('properties :::', properties);
-
-      return {
-        id: project.id,
-        title: properties.Name?.title?.[0]?.plain_text || '',
-        description: properties.Description?.rich_text?.[0]?.plain_text || '',
-        stacks: properties.Stacks?.multi_select?.map((stack: string[]) => stack) || [],
-        url: properties.NotionDetail?.url || undefined,
-        github: properties.GitHub?.url || undefined,
-        period: properties.Period?.date,
-      };
-    });
+        return {
+          id: page.id,
+          title: properties.Name?.title?.[0]?.plain_text || '',
+          description: properties.Description?.rich_text?.[0]?.plain_text || '',
+          stacks: properties.Stacks?.multi_select || [],
+          url: properties.NotionDetail?.url,
+          github: properties.GitHub?.url,
+          period: properties.Period?.date,
+        };
+      }) || []
+    );
   } catch (error) {
     console.error('ERROR :::', error);
     return [];

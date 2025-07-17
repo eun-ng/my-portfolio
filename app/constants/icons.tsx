@@ -1,8 +1,6 @@
 import { ExternalLinkIcon, Mail } from 'lucide-react';
 
-const ICON_SIZE = 24;
-
-const ICON_STYLES = 'text-gray-300 hover:text-gray-50 transition-colors';
+const ICON_STYLES = 'text-gray-300 hover:text-gray-50 transition-colors w-4 h-4 lg:w-6 lg:h-6';
 
 export const SOCIAL_ICONS = [
   {
@@ -10,8 +8,8 @@ export const SOCIAL_ICONS = [
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={ICON_SIZE}
-        height={ICON_SIZE}
+        width="24"
+        height="24"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -28,12 +26,12 @@ export const SOCIAL_ICONS = [
   },
   {
     id: 2,
-    icon: <Mail size={ICON_SIZE} className={ICON_STYLES} />,
+    icon: <Mail className={ICON_STYLES} />,
     url: 'mailto:eunng.dev@gmail.com',
   },
   {
     id: 3,
-    icon: <ExternalLinkIcon size={ICON_SIZE} className={ICON_STYLES} />,
+    icon: <ExternalLinkIcon className={ICON_STYLES} />,
     url: 'https://eun-ng.notion.site/0e69c7127a234655b3246be33c78ced1?v=45bec4ef31764e4f9364bd7a94795169&pvs=74',
   },
 ];

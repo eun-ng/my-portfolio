@@ -1,6 +1,23 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.notion.so',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3.us-west-2.amazonaws.com',
+      },
+    ],
+    unoptimized: process.env.NODE_ENV === 'production',
+  },
   turbopack: {
     rules: {
       '*.svg': {

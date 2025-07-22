@@ -37,9 +37,9 @@ const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col gap-1">
-                      <CardTitle className="text-xl">{career.company}</CardTitle>
-                      <p className="text-sm text-body-text font-medium">{career.jd}</p>
-                      <p className="text-sm text-muted-foreground">{`${career.startDate} - ${career.endDate}`}</p>
+                      <CardTitle className="text-xl lg:text-2xl">{career.company}</CardTitle>
+                      <p className="text-sm lg:text-base text-body-text font-medium">{career.jd}</p>
+                      <p className="text-sm lg:text-base text-muted-foreground">{`${career.startDate} - ${career.endDate}`}</p>
                     </div>
                     <motion.div
                       animate={{
@@ -54,7 +54,7 @@ const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
                       <ArrowUpRight size={16} />
                     </motion.div>
                   </div>
-                  <CardDescription>{career.description}</CardDescription>
+                  <CardDescription className="lg:text-base">{career.description}</CardDescription>
                 </CardHeader>
               </Card>
             </a>

@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 
 const useHoverCard = () => {
@@ -6,13 +7,16 @@ const useHoverCard = () => {
 
   useEffect(() => {
     const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+      if (typeof window !== 'undefined') {
+        setIsDesktop(window.innerWidth >= 1024);
+      }
     };
 
     checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-
-    return () => window.removeEventListener('resize', checkDesktop);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkDesktop);
+      return () => window.removeEventListener('resize', checkDesktop);
+    }
   }, []);
 
   const handleHoverStart = (id: string) => {

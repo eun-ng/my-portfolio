@@ -9,10 +9,19 @@ export interface NotionPropertiesProps {
   github?: string;
   period?: string;
   projectType?: { id: string; name: string; color: string }[];
+  coverImage?: string;
 }
 
 interface NotionPage {
   id: string;
+  cover?: {
+    file?: {
+      url: string;
+    };
+    external?: {
+      url: string;
+    };
+  };
   properties: {
     Name?: {
       title?: { plain_text: string }[];
@@ -66,11 +75,23 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
       database_id: databaseId,
     });
 
+    console.debug('response :::', response);
+
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
         const properties = (page as NotionPage).properties;
 
         console.debug('properties :::', properties);
+        
+        const cover = (page as { cover?: { file?: { url: string }; external?: { url: string } } }).cover;
+        const rawImageUrl = cover?.file?.url || cover?.external?.url;
+        
+        console.debug('Cover info:', {
+          cover,
+          rawImageUrl,
+          hasFile: !!cover?.file,
+          hasExternal: !!cover?.external
+        });
 
         return {
           id: page.id,
@@ -81,6 +102,17 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
           github: properties.GitHub?.url,
           period: properties.Period?.date,
           projectType: properties.ProjectType?.multi_select || [],
+          coverImage: (() => {
+            // Notion S3 URL을 프록시를 통해 처리
+            if (rawImageUrl?.includes('prod-files-secure.s3.us-west-2.amazonaws.com')) {
+              console.debug('Using proxy for:', rawImageUrl);
+              const encodedUrl = encodeURIComponent(rawImageUrl);
+              return `/api/image-proxy?url=${encodedUrl}`;
+            }
+            
+            console.debug('Using direct URL:', rawImageUrl);
+            return rawImageUrl;
+          })(),
         };
       }) || []
     );

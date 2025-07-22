@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: '남궁은 포트폴리오',
     images: [
       {
-        url: '/og-image.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: '남궁은 - Front End Developer',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '남궁은 | Front End Developer',
     description: '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
-    images: ['/og-image.svg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,

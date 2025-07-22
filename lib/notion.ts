@@ -8,6 +8,7 @@ export interface NotionPropertiesProps {
   url?: string;
   github?: string;
   period?: string;
+  projectType?: { id: string; name: string; color: string }[];
 }
 
 interface NotionPage {
@@ -30,6 +31,9 @@ interface NotionPage {
     };
     Period?: {
       date?: string;
+    };
+    ProjectType?: {
+      multi_select?: { id: string; name: string; color: string }[];
     };
   };
 }
@@ -64,7 +68,9 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
 
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
-        const properties = page.properties;
+        const properties = (page as NotionPage).properties;
+
+        console.debug('properties :::', properties);
 
         return {
           id: page.id,
@@ -74,6 +80,7 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
           url: properties.NotionDetail?.url,
           github: properties.GitHub?.url,
           period: properties.Period?.date,
+          projectType: properties.ProjectType?.multi_select || [],
         };
       }) || []
     );

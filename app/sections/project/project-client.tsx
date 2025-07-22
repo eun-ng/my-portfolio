@@ -13,6 +13,35 @@ interface ProjectClientProps {
 const ProjectClient = ({ projects }: ProjectClientProps) => {
   const { handleHoverStart, handleHoverEnd, isOtherHovered, isHovered, isDesktop } = useHoverCard();
 
+  const getProjectTypeInfo = (projectType?: { name: string; color: string }[]) => {
+    const hasCompany = projectType?.some((t) => t.name === 'Company');
+    const hasPersonalOrTeam = projectType?.some(
+      (t) => t.name === 'Personal' || t.name === 'Toy Project' || t.name === 'Team' || t.name === 'Team Project'
+    );
+
+    if (hasCompany) {
+      return {
+        icon: '🏢',
+        label: 'Company',
+        bgColor: 'bg-blue-500/10',
+        borderColor: 'border-blue-500/30',
+        textColor: 'text-blue-400',
+      };
+    }
+    if (hasPersonalOrTeam) {
+      // Team 프로젝트는 👥 아이콘 사용, Personal은 🚀 사용
+      const hasTeam = projectType?.some((t) => t.name === 'Team' || t.name === 'Team Project');
+      return {
+        icon: hasTeam ? '👥' : '🚀',
+        label: hasTeam ? 'Team' : 'Personal',
+        bgColor: 'bg-orange-500/10',
+        borderColor: 'border-orange-500/30',
+        textColor: 'text-orange-400',
+      };
+    }
+    return null;
+  };
+
   return (
     <>
       {projects?.map((project: NotionPropertiesProps, index: number) => (
@@ -41,7 +70,22 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
               >
                 <CardHeader>
                   <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                    <div className={`flex flex-col ${project.description ? 'gap-2' : 'gap-0'}`}>
+                      <div className="flex items-center gap-2">
+                        <CardTitle className="text-xl">{project.title}</CardTitle>
+                        {(() => {
+                          const typeInfo = getProjectTypeInfo(project.projectType);
+                          return typeInfo ? (
+                            <Badge
+                              className={`text-xs ${typeInfo.textColor} ${typeInfo.bgColor} border ${typeInfo.borderColor} px-2 py-0.5`}
+                            >
+                              {typeInfo.icon} {typeInfo.label}
+                            </Badge>
+                          ) : null;
+                        })()}
+                      </div>
+                      {project.description && <CardDescription>{project.description}</CardDescription>}
+                    </div>
                     <motion.div
                       animate={{
                         y: isHovered(project.id) ? -6 : 0,
@@ -55,7 +99,6 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                       <ArrowUpRight size={16} />
                     </motion.div>
                   </div>
-                  <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -70,7 +113,7 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                           ease: 'easeOut',
                         }}
                       >
-                        <Badge className="text-accent bg-accent/10 border border-accent/30 cursor-default backdrop-blur-sm">
+                        <Badge className="text-accent bg-accent/10 border border-accent/30 cursor-default">
                           {stack.name}
                         </Badge>
                       </motion.div>
@@ -81,7 +124,7 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
             </a>
           ) : (
             <Card className="max-w-2xl bg-transparent border-transparent">
-              <CardHeader className="pb-3">
+              <CardHeader className="gap-2">
                 <a href={project.url} target="_blank" rel="noopener noreferrer">
                   <div className="flex justify-between items-center hover:text-primary transition-colors group">
                     <CardTitle className="text-lg lg:text-xl group-hover:underline group-hover:decoration-primary/30">
@@ -90,10 +133,22 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                     <ArrowUpRight size={16} />
                   </div>
                 </a>
-                <CardDescription className="mt-2 text-sm">{project.description}</CardDescription>
+                <div className={`flex flex-col ${project.description ? 'gap-2' : 'gap-0'}`}>
+                  {(() => {
+                    const typeInfo = getProjectTypeInfo(project.projectType);
+                    return typeInfo ? (
+                      <Badge
+                        className={`text-xs ${typeInfo.textColor} ${typeInfo.bgColor} border ${typeInfo.borderColor} px-2 py-0.5 w-fit`}
+                      >
+                        {typeInfo.icon} {typeInfo.label}
+                      </Badge>
+                    ) : null;
+                  })()}
+                  {project.description && <CardDescription className="text-sm">{project.description}</CardDescription>}
+                </div>
               </CardHeader>
 
-              <CardContent className="pt-0">
+              <CardContent>
                 <div className="flex flex-wrap gap-1.5">
                   {project.stacks?.map((stack: { id: string; name: string; color: string }, stackIndex: number) => (
                     <motion.div
@@ -106,7 +161,7 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                         ease: 'easeOut',
                       }}
                     >
-                      <Badge className="text-xs text-accent bg-accent/10 border border-accent/30 backdrop-blur-sm px-2 py-1">
+                      <Badge className="text-xs text-accent bg-accent/10 border border-accent/30 px-2 py-1">
                         {stack.name}
                       </Badge>
                     </motion.div>

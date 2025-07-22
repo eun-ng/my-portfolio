@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 import { SectionId } from '@/app/constants/navigation';
 
@@ -43,7 +42,6 @@ export const useScrollSpy = (sectionIds: SectionId[], options: UseScrollSpyOptio
     // 초기 로드 시 체크
     handleScroll();
 
-    // 스크롤 이벤트 리스너 등록 (throttling 적용)
     let isThrottled = false;
     const throttledHandleScroll = () => {
       if (!isThrottled) {

@@ -38,6 +38,7 @@ const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
                   <div className="flex justify-between items-start">
                     <div className="flex flex-col gap-1">
                       <CardTitle className="text-xl">{career.company}</CardTitle>
+                      <p className="text-sm text-body-text font-medium">{career.jd}</p>
                       <p className="text-sm text-muted-foreground">{`${career.startDate} - ${career.endDate}`}</p>
                     </div>
                     <motion.div
@@ -62,14 +63,17 @@ const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
               <CardHeader className="pb-4">
                 <a href={career.url} target="_blank" rel="noopener noreferrer">
                   <div className="flex justify-between items-center hover:text-primary transition-colors group">
-                    <CardTitle className="text-lg lg:text-xl group-hover:underline group-hover:decoration-primary/30">
-                      {career.company}
-                    </CardTitle>
+                    <div className="flex flex-col">
+                      <CardTitle className="text-lg lg:text-xl group-hover:underline group-hover:decoration-primary/30">
+                        {career.company}
+                      </CardTitle>
+                      <p className="text-sm text-body-text font-medium">{career.jd}</p>
+                    </div>
                     <ArrowUpRight size={16} />
                   </div>
                 </a>
                 <p className="text-sm text-muted-foreground mt-2">{`${career.startDate} - ${career.endDate}`}</p>
-                <CardDescription className="mt-2 text-sm">{career.description}</CardDescription>
+                <CardDescription className="text-sm mt-2">{career.description}</CardDescription>
               </CardHeader>
             </Card>
           )}

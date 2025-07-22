@@ -1,5 +1,33 @@
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import './globals.css';
+
+const pretendard = localFont({
+  src: [
+    {
+      path: '../public/fonts/Pretendard-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Pretendard-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Pretendard-SemiBold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Pretendard-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-pretendard',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Eun-Ng',
@@ -64,13 +92,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <head>
-        <link
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased font-sans">{children}</body>
+      <body className={`${pretendard.variable} antialiased font-sans`}>{children}</body>
     </html>
   );
 }

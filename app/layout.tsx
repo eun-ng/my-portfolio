@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import GoogleAnalytics from './components/Analytics';
 
 const pretendard = localFont({
   src: [
@@ -42,14 +43,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://my-domain.com'),
+  metadataBase: new URL('https://eunng.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: '남궁은 | Front End Developer',
     description: '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
-    url: 'https://my-domain.com',
+    url: 'https://eunng.com',
     siteName: '남궁은 포트폴리오',
     images: [
       {
@@ -92,7 +93,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable} antialiased font-sans`}>{children}</body>
+      <body className={`${pretendard.variable} antialiased font-sans`}>
+        {children}
+        <GoogleAnalytics />
+      </body>
     </html>
   );
 }

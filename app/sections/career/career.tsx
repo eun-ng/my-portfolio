@@ -1,31 +1,5 @@
-'use client';
-import { Suspense } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import React from 'react';
 import CareerClient from './career-client';
-
-const CareerSkeleton = ({ count = 1 }: { count?: number }) => (
-  <div className="space-y-6">
-    {Array.from({ length: count }, (_, index) => (
-      <div key={index} className="max-w-2xl">
-        <div className="p-6">
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex flex-col gap-2">
-              <Skeleton className="h-7 lg:h-8 w-40" />
-              <Skeleton className="h-4 lg:h-5 w-32" />
-              <Skeleton className="h-4 lg:h-5 w-28" />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <Skeleton className="h-4 lg:h-5 w-full" />
-            <Skeleton className="h-4 lg:h-5 w-5/6" />
-            <Skeleton className="h-4 lg:h-5 w-4/5" />
-            <Skeleton className="h-4 lg:h-5 w-3/4" />
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-);
 
 export interface CareerInfo {
   id: string;
@@ -67,9 +41,7 @@ const CAREER_INFO: CareerInfo[] = [
 const CareerSection = () => {
   return (
     <div id="career" className="grid">
-      <Suspense fallback={<CareerSkeleton count={CAREER_INFO.length} />}>
-        <CareerClient careerInfo={CAREER_INFO} />
-      </Suspense>
+      <CareerClient careerInfo={CAREER_INFO} />
     </div>
   );
 };

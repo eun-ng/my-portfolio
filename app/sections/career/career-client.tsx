@@ -1,8 +1,8 @@
 'use client';
 import * as motion from 'motion/react-client';
 import useHoverCard from '@/app/hooks/useHoverCard';
-import { CareerInfo } from './career';
 import { CareerItem } from '@/components/ui/career-item';
+import { CareerInfo } from './career';
 
 const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
   const { handleHoverStart, handleHoverEnd, isOtherHovered, isHovered, isDesktop } = useHoverCard();

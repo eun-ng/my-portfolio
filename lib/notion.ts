@@ -39,7 +39,10 @@ interface NotionPage {
       url?: string;
     };
     Period?: {
-      date?: string;
+      date?: {
+        start?: string;
+        end?: string;
+      };
     };
     ProjectType?: {
       multi_select?: { id: string; name: string; color: string }[];
@@ -89,7 +92,10 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
           stacks: properties.Stacks?.multi_select || [],
           url: properties.NotionDetail?.url,
           github: properties.GitHub?.url,
-          period: properties.Period?.date,
+          period:
+            properties.Period?.date?.start && properties.Period?.date?.end
+              ? `${properties.Period.date.start} ~ ${properties.Period.date.end}`
+              : properties.Period?.date?.start || '',
           projectType: properties.ProjectType?.multi_select || [],
           coverImage: rawImageUrl,
         };
@@ -97,6 +103,10 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
     );
   } catch (error) {
     console.error('Notion API Error:', error);
+    console.error('Environment check:', {
+      hasToken: !!process.env.NOTION_TOKEN,
+      hasDatabase: !!process.env.NOTION_DATABASE_ID,
+    });
     return [];
   }
 }

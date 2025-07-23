@@ -14,6 +14,8 @@ interface ProjectClientProps {
 const ProjectClient = ({ projects }: ProjectClientProps) => {
   const { handleHoverStart, handleHoverEnd, isOtherHovered, isHovered, isDesktop } = useHoverCard();
 
+  console.log('ProjectClient received projects:', projects?.length, projects);
+
   if (!projects || projects.length === 0) {
     return (
       <div className="text-center text-muted-foreground py-8">
@@ -84,7 +86,7 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                           src={project.coverImage}
                           alt={project.title}
                           fill
-                          className="object-cover transition-transform duration-300 hover:scale-105"
+                          className="object-cover"
                           sizes="(min-width: 1024px) 160px, 144px"
                           priority={index === 0}
                           onError={(e) => {

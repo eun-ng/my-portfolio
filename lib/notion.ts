@@ -78,6 +78,9 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
       database_id: databaseId,
     });
 
+    console.log('API Response received, processing results...');
+    console.log('Results count:', response.results?.length);
+    
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
         const properties = (page as NotionPage).properties;

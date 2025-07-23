@@ -23,17 +23,17 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <div className="h-6 bg-muted rounded w-48"></div>
-                    <div className="h-5 bg-muted rounded-full w-20"></div>
+                    <div className="h-6 bg-muted rounded w-32 sm:w-48"></div>
+                    <div className="h-5 bg-muted rounded-full w-16 sm:w-20"></div>
                   </div>
-                  <div className="h-4 bg-muted rounded w-64"></div>
+                  <div className="h-4 bg-muted rounded w-40 sm:w-64"></div>
                 </div>
               </div>
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2 mb-4">
                 {[1, 2, 3, 4].map((badgeIndex) => (
-                  <div key={badgeIndex} className="h-6 bg-muted rounded-full w-16"></div>
+                  <div key={badgeIndex} className="h-6 bg-muted rounded-full w-12 sm:w-16"></div>
                 ))}
               </div>
             </CardContent>
@@ -111,7 +111,10 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                           priority={index === 0}
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
+                            const parent = target.parentElement;
+                            if (parent) {
+                              parent.style.display = 'none';
+                            }
                           }}
                         />
                       </div>
@@ -181,16 +184,19 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
               <div className="p-3">
                 <div className="flex flex-col gap-3">
                   {project.coverImage && (
-                    <div className="relative w-full aspect-[4/3] sm:aspect-video max-w-sm md:max-w-md overflow-hidden rounded border border-border/50">
+                    <div className="relative w-full aspect-video max-w-xs overflow-hidden rounded border border-border/50">
                       <Image
                         src={project.coverImage}
                         alt={project.title}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 640px) 384px, 448px"
+                        sizes="(max-width: 640px) 320px, 448px"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.style.display = 'none';
+                          }
                         }}
                       />
                     </div>

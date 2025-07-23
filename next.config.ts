@@ -15,8 +15,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 's3.us-west-2.amazonaws.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com',
+      },
     ],
-    unoptimized: process.env.NODE_ENV === 'production',
+    unoptimized: false,
   },
   turbopack: {
     rules: {

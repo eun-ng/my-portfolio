@@ -35,7 +35,7 @@ export const ProjectItem = ({ project, index, isDesktop, isHovered }: ProjectIte
 
   return (
     <div className="bg-transparent">
-      <div className="p-6">
+      <div className="py-6 lg:p-6">
         <a href={project.url} target="_blank" rel="noopener noreferrer">
           <div className="flex justify-between items-center hover:text-primary transition-colors group mb-2 -m-2 p-2 rounded">
             <CardTitle className="text-base group-hover:underline group-hover:decoration-primary/30">

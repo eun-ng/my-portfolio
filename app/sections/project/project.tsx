@@ -7,7 +7,6 @@ const ProjectSkeleton = () => (
   <div className="space-y-6">
     {[1, 2, 3].map((index) => (
       <div key={index} className="max-w-2xl">
-        {/* Desktop Skeleton */}
         <div className="hidden lg:block">
           <div className="border border-transparent rounded-lg p-6">
             <div className="flex justify-between items-start mb-4">
@@ -28,7 +27,6 @@ const ProjectSkeleton = () => (
           </div>
         </div>
 
-        {/* Mobile Skeleton */}
         <div className="lg:hidden">
           <div className="p-6">
             <div className="flex justify-between items-center mb-2">

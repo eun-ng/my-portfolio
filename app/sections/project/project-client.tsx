@@ -1,6 +1,6 @@
 'use client';
 import * as motion from 'motion/react-client';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardDescription, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight } from 'lucide-react';
 import { NotionPropertiesProps } from '@/lib/notion';
@@ -16,29 +16,8 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
 
   if (!projects || projects.length === 0) {
     return (
-      <div className="space-y-6">
-        {[1, 2, 3].map((index) => (
-          <Card key={index} className="max-w-2xl bg-transparent border-transparent animate-pulse">
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div className="h-6 bg-muted rounded w-32 sm:w-48"></div>
-                    <div className="h-5 bg-muted rounded-full w-16 sm:w-20"></div>
-                  </div>
-                  <div className="h-4 bg-muted rounded w-40 sm:w-64"></div>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {[1, 2, 3, 4].map((badgeIndex) => (
-                  <div key={badgeIndex} className="h-6 bg-muted rounded-full w-12 sm:w-16"></div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="text-center text-muted-foreground py-8">
+        <p>프로젝트가 없습니다.</p>
       </div>
     );
   }
@@ -59,7 +38,6 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
       };
     }
     if (hasPersonalOrTeam) {
-      // Team 프로젝트는 👥 아이콘 사용, Personal은 🚀 사용
       const hasTeam = projectType?.some((t) => t.name === 'Team' || t.name === 'Team Project');
       return {
         icon: hasTeam ? '👥' : '🚀',
@@ -100,8 +78,8 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
               >
                 <div className="p-4">
                   <div className="flex gap-4">
-                    {project.coverImage && (
-                      <div className="relative w-36 h-24 lg:w-40 lg:h-28 flex-shrink-0 overflow-hidden rounded border border-border/50">
+                    <div className="relative w-36 h-24 lg:w-40 lg:h-28 flex-shrink-0 overflow-hidden rounded border border-border/50">
+                      {project.coverImage ? (
                         <Image
                           src={project.coverImage}
                           alt={project.title}
@@ -113,12 +91,24 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                             const target = e.target as HTMLImageElement;
                             const parent = target.parentElement;
                             if (parent) {
-                              parent.style.display = 'none';
+                              parent.innerHTML = `
+                                <div class="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                                  <span class="text-2xl lg:text-3xl font-bold text-accent">${project.title
+                                    .charAt(0)
+                                    .toUpperCase()}</span>
+                                </div>
+                              `;
                             }
                           }}
                         />
-                      </div>
-                    )}
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                          <span className="text-2xl lg:text-3xl font-bold text-accent">
+                            {project.title.charAt(0).toUpperCase()}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start">
                         <div className={`flex flex-col ${project.description ? 'gap-2' : 'gap-0'}`}>
@@ -183,8 +173,8 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
             <Card className="max-w-2xl bg-transparent border-transparent">
               <div className="p-3">
                 <div className="flex flex-col gap-3">
-                  {project.coverImage && (
-                    <div className="relative w-full aspect-video max-w-xs overflow-hidden rounded border border-border/50">
+                  <div className="relative w-full aspect-video max-w-xs overflow-hidden rounded border border-border/50">
+                    {project.coverImage ? (
                       <Image
                         src={project.coverImage}
                         alt={project.title}
@@ -195,12 +185,22 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
                           const target = e.target as HTMLImageElement;
                           const parent = target.parentElement;
                           if (parent) {
-                            parent.style.display = 'none';
+                            parent.innerHTML = `
+                              <div class="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                                <span class="text-4xl font-bold text-accent">${project.title
+                                  .charAt(0)
+                                  .toUpperCase()}</span>
+                              </div>
+                            `;
                           }
                         }}
                       />
-                    </div>
-                  )}
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                        <span className="text-4xl font-bold text-accent">{project.title.charAt(0).toUpperCase()}</span>
+                      </div>
+                    )}
+                  </div>
                   <div>
                     <a href={project.url} target="_blank" rel="noopener noreferrer">
                       <div className="flex justify-between items-center hover:text-primary transition-colors group mb-2">

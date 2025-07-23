@@ -75,23 +75,12 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
       database_id: databaseId,
     });
 
-    console.debug('response :::', response);
-
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
         const properties = (page as NotionPage).properties;
 
-        console.debug('properties :::', properties);
-
         const cover = (page as { cover?: { file?: { url: string }; external?: { url: string } } }).cover;
         const rawImageUrl = cover?.file?.url || cover?.external?.url;
-
-        console.debug('Cover info:', {
-          cover,
-          rawImageUrl,
-          hasFile: !!cover?.file,
-          hasExternal: !!cover?.external,
-        });
 
         return {
           id: page.id,
@@ -107,7 +96,7 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
       }) || []
     );
   } catch (error) {
-    console.error('ERROR :::', error);
+    console.error('Notion API Error:', error);
     return [];
   }
 }

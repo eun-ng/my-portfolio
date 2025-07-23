@@ -3,9 +3,9 @@ import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import CareerClient from './career-client';
 
-const CareerSkeleton = () => (
+const CareerSkeleton = ({ count = 1 }: { count?: number }) => (
   <div className="space-y-6">
-    {[1].map((index) => (
+    {Array.from({ length: count }, (_, index) => (
       <div key={index} className="max-w-2xl">
         <div className="p-6">
           <div className="flex justify-between items-start mb-4">
@@ -67,7 +67,7 @@ const CAREER_INFO: CareerInfo[] = [
 const CareerSection = () => {
   return (
     <div id="career" className="grid">
-      <Suspense fallback={<CareerSkeleton />}>
+      <Suspense fallback={<CareerSkeleton count={CAREER_INFO.length} />}>
         <CareerClient careerInfo={CAREER_INFO} />
       </Suspense>
     </div>

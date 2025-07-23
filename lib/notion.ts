@@ -1,27 +1,27 @@
 import { Client } from '@notionhq/client';
+import { StackItem } from './types/stack';
 
 export interface NotionPropertiesProps {
   id: string;
   title: string;
   description?: string;
-  stacks?: { id: string; name: string; color: string }[];
+  stacks?: StackItem[];
   url?: string;
   github?: string;
   period?: string;
-  projectType?: { id: string; name: string; color: string }[];
-  coverImage?: string;
+  projectType?: StackItem[];
 }
+
+export interface ApiError {
+  error: string;
+  message: string;
+  hasData: boolean;
+}
+
+export type ProjectsResponse = NotionPropertiesProps[] | ApiError;
 
 interface NotionPage {
   id: string;
-  cover?: {
-    file?: {
-      url: string;
-    };
-    external?: {
-      url: string;
-    };
-  };
   properties: {
     Name?: {
       title?: { plain_text: string }[];
@@ -58,7 +58,8 @@ const isValidNotionPage = (page: unknown): page is NotionPage => {
     'id' in pageObj &&
     'properties' in pageObj &&
     typeof pageObj.id === 'string' &&
-    typeof pageObj.properties === 'object'
+    typeof pageObj.properties === 'object' &&
+    pageObj.properties !== null
   );
 };
 
@@ -66,7 +67,7 @@ const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export async function getProjects(): Promise<NotionPropertiesProps[]> {
+export async function getProjects(pageSize: number = 10): Promise<NotionPropertiesProps[]> {
   try {
     const databaseId = process.env.NOTION_DATABASE_ID;
 
@@ -76,24 +77,18 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
 
     const response = await notion.databases.query({
       database_id: databaseId,
-      page_size: 10,
+      page_size: pageSize,
       sorts: [
         {
-          property: 'Name',
-          direction: 'ascending',
+          property: 'Period',
+          direction: 'descending',
         },
       ],
     });
 
-    console.log('API Response received, processing results...');
-    console.log('Results count:', response.results?.length);
-
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
         const properties = (page as NotionPage).properties;
-
-        const cover = (page as { cover?: { file?: { url: string }; external?: { url: string } } }).cover;
-        const rawImageUrl = cover?.file?.url || cover?.external?.url;
 
         return {
           id: page.id,
@@ -107,7 +102,6 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
               ? `${properties.Period.date.start} ~ ${properties.Period.date.end}`
               : properties.Period?.date?.start || '',
           projectType: properties.ProjectType?.multi_select || [],
-          coverImage: rawImageUrl,
         };
       }) || []
     );
@@ -117,6 +111,19 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
       hasToken: !!process.env.NOTION_TOKEN,
       hasDatabase: !!process.env.NOTION_DATABASE_ID,
     });
-    return [];
+
+    if (error instanceof Error) {
+      if (error.message.includes('Unauthorized')) {
+        throw new Error('Notion API 인증에 실패했습니다. 토큰을 확인해주세요.');
+      }
+      if (error.message.includes('Not found')) {
+        throw new Error('Notion 데이터베이스를 찾을 수 없습니다. 데이터베이스 ID를 확인해주세요.');
+      }
+      if (error.message.includes('timeout') || error.message.includes('ETIMEDOUT')) {
+        throw new Error('네트워크 요청이 시간 초과되었습니다. 잠시 후 다시 시도해주세요.');
+      }
+    }
+
+    throw new Error('프로젝트를 불러오는 중 오류가 발생했습니다.');
   }
 }

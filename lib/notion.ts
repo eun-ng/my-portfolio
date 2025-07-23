@@ -76,11 +76,18 @@ export async function getProjects(): Promise<NotionPropertiesProps[]> {
 
     const response = await notion.databases.query({
       database_id: databaseId,
+      page_size: 10,
+      sorts: [
+        {
+          property: 'Name',
+          direction: 'ascending',
+        },
+      ],
     });
 
     console.log('API Response received, processing results...');
     console.log('Results count:', response.results?.length);
-    
+
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
         const properties = (page as NotionPage).properties;

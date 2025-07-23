@@ -5,6 +5,8 @@ import CareerSection from './sections/career/career';
 import { ScrollSpyNav } from './components/ScrollSpyNav';
 import { getProjects } from '@/lib/notion';
 
+export const revalidate = 1800;
+
 export default async function Home() {
   const projects = await getProjects();
   return (

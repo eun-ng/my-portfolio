@@ -9,7 +9,6 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Notion 이미지 URL인지 확인
     if (!imageUrl.includes('prod-files-secure.s3.us-west-2.amazonaws.com')) {
       return new NextResponse('Invalid URL', { status: 400 });
     }

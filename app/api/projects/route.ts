@@ -14,13 +14,13 @@ export async function GET() {
     });
   } catch (error) {
     console.error('API Route Error:', error);
-    
+
     const errorResponse: ApiError = {
       error: 'FETCH_FAILED',
       message: error instanceof Error ? error.message : '프로젝트를 불러오는 중 오류가 발생했습니다.',
       hasData: false,
     };
-    
+
     return NextResponse.json(errorResponse, { status: 500 });
   }
 }

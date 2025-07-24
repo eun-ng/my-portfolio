@@ -1,14 +1,20 @@
+import { Suspense } from 'react';
 import { SOCIAL_ICONS } from './constants/icons';
 import IntroSection from './sections/intro';
 import ProjectSection from './sections/project/project';
 import CareerSection from './sections/career/career';
 import { ScrollSpyNav } from './components/ScrollSpyNav';
 import { getProjects } from '@/lib/notion';
+import ProjectSkeleton from '@/components/ui/project-skeleton';
 
 export const revalidate = 1800;
 
-export default async function Home() {
+const ProjectSectionWrapper = async () => {
   const projects = await getProjects();
+  return <ProjectSection projects={projects} />;
+};
+
+export default function Home() {
   return (
     <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 bg-background text-foreground lg:grid lg:grid-cols-2 lg:px-12 lg:py-0">
       <div className="flex flex-col items-start lg:max-h-screen lg:justify-between lg:sticky lg:top-0 lg:py-24">
@@ -41,7 +47,9 @@ export default async function Home() {
       <div className="flex flex-col justify-start pt-16 gap-16 lg:pt-24 lg:pb-24 lg:gap-24">
         <IntroSection />
         <CareerSection />
-        <ProjectSection projects={projects} />
+        <Suspense fallback={<ProjectSkeleton />}>
+          <ProjectSectionWrapper />
+        </Suspense>
         <footer className="mt-16 lg:mt-24 pt-8 border-t border-border/50">
           <p className="text-sm text-muted-foreground text-center lg:text-left">
             <span className="text-white font-medium">Next.js</span>와{' '}

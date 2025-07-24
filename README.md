@@ -16,20 +16,21 @@
 
 - 반응형 디자인
 - Notion API를 통한 동적 프로젝트 데이터 관리
-- Scroll Spy 네비게이션
+- Scroll Spy 컨텐츠 섹션 네비게이션
 - Framer Motion을 활용한 부드러운 애니메이션
 - SEO 최적화 및 성능 최적화
+- Google Analytics, Google Search Console 연동
 
 ## 🏗️ 프로젝트 구조
 
 ```
 my-portfolio/
-├── app/                    # Next.js App Router
-│   ├── api/               # API 라우트
-│   ├── components/        # 공통 컴포넌트
-│   ├── sections/          # 페이지 섹션들
+├── app/                  # Next.js App Router
+│   ├── api/              # API 라우트
+│   ├── components/       # 공통 컴포넌트
+│   ├── sections/         # 페이지 섹션들
 │   └── page.tsx          # 메인 페이지
-├── components/            # UI 컴포넌트
+├── components/           # UI 컴포넌트
 │   └── ui/               # shadcn/ui 컴포넌트, 커스텀 ui 컴포넌트
 ├── lib/                  # 유틸리티 및 설정
 │   ├── notion.ts         # Notion API 클라이언트

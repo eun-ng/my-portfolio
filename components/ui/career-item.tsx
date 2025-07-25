@@ -1,4 +1,4 @@
-import * as motion from 'motion/react-client';
+import { motion } from 'framer-motion';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowUpRight } from 'lucide-react';
 import { CareerInfo } from '@/app/sections/career/career';

@@ -1,5 +1,5 @@
 'use client';
-import * as motion from 'motion/react-client';
+import { motion } from 'framer-motion';
 import useHoverCard from '@/app/hooks/useHoverCard';
 import { CareerItem } from '@/components/ui/career-item';
 import { CareerInfo } from './career';

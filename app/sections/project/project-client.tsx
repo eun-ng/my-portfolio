@@ -1,5 +1,5 @@
 'use client';
-import * as motion from 'motion/react-client';
+import { motion } from 'framer-motion';
 import { NotionPropertiesProps } from '@/lib/notion';
 import useHoverCard from '@/app/hooks/useHoverCard';
 import { ProjectItem } from '@/components/ui/project-item';

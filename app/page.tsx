@@ -41,6 +41,7 @@ export default function Home() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={item.label}
                 className=" metallic-border p-2 rounded-lg inline-block lg:hover-glow lg:cursor-pointer"
               >
                 {item.icon}

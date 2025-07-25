@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getProjects, ApiError } from '@/lib/notion';
 
+export const runtime = 'edge';
 export const revalidate = 900; // 15분으로 단축
 
 export async function GET() {
@@ -21,7 +22,7 @@ export async function GET() {
       hasData: false,
     };
 
-    return NextResponse.json(errorResponse, { 
+    return NextResponse.json(errorResponse, {
       status: 500,
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',

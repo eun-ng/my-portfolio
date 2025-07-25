@@ -8,9 +8,18 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  
+  images: {
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 31536000,
+  },
 
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],
+  },
+
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   turbopack: {
     rules: {

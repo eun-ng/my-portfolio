@@ -65,7 +65,7 @@ const isValidNotionPage = (page: unknown): page is NotionPage => {
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
-  timeoutMs: 10000, // 10초 타임아웃
+  timeoutMs: 5000, // 5초로 단축
 });
 
 async function fetchWithRetry<T>(fn: () => Promise<T>, retries: number = 2): Promise<T> {

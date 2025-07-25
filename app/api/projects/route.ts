@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getProjects, ApiError } from '@/lib/notion';
 
 export const runtime = 'edge';
-export const revalidate = 900; // 15분으로 단축
+export const revalidate = 3600; // 1시간으로 연장
 
 export async function GET() {
   try {
@@ -10,7 +10,7 @@ export async function GET() {
 
     return NextResponse.json(projects, {
       headers: {
-        'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=1800, stale-if-error=86400',
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=1800, stale-if-error=86400',
       },
     });
   } catch (error) {

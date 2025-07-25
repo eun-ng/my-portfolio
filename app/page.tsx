@@ -7,11 +7,16 @@ import { ScrollSpyNav } from './components/ScrollSpyNav';
 import { getProjects } from '@/lib/notion';
 import ProjectSkeleton from '@/components/ui/project-skeleton';
 
-export const revalidate = 1800;
+export const revalidate = 900;
 
 const ProjectSectionWrapper = async () => {
-  const projects = await getProjects();
-  return <ProjectSection projects={projects} />;
+  try {
+    const projects = await getProjects();
+    return <ProjectSection projects={projects} />;
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    return <ProjectSection projects={[]} />;
+  }
 };
 
 export default function Home() {

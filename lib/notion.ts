@@ -65,7 +65,32 @@ const isValidNotionPage = (page: unknown): page is NotionPage => {
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
+  timeoutMs: 10000, // 10초 타임아웃
 });
+
+async function fetchWithRetry<T>(fn: () => Promise<T>, retries: number = 2): Promise<T> {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (i === retries) throw error;
+
+      if (
+        error instanceof Error &&
+        (error.message.includes('timeout') ||
+          error.message.includes('ETIMEDOUT') ||
+          error.message.includes('ECONNRESET'))
+      ) {
+        console.warn(`Retry attempt ${i + 1}/${retries + 1} after network error:`, error.message);
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (i + 1)));
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  throw new Error('All retry attempts failed');
+}
 
 export async function getProjects(pageSize: number = 10): Promise<NotionPropertiesProps[]> {
   try {
@@ -75,16 +100,18 @@ export async function getProjects(pageSize: number = 10): Promise<NotionProperti
       throw new Error('NOTION_DATABASE_ID를 확인해주세요.');
     }
 
-    const response = await notion.databases.query({
-      database_id: databaseId,
-      page_size: pageSize,
-      sorts: [
-        {
-          property: 'Period',
-          direction: 'descending',
-        },
-      ],
-    });
+    const response = await fetchWithRetry(() =>
+      notion.databases.query({
+        database_id: databaseId,
+        page_size: pageSize,
+        sorts: [
+          {
+            property: 'Period',
+            direction: 'descending',
+          },
+        ],
+      })
+    );
 
     return (
       response.results?.filter(isValidNotionPage).map((page) => {
@@ -121,6 +148,9 @@ export async function getProjects(pageSize: number = 10): Promise<NotionProperti
       }
       if (error.message.includes('timeout') || error.message.includes('ETIMEDOUT')) {
         throw new Error('네트워크 요청이 시간 초과되었습니다. 잠시 후 다시 시도해주세요.');
+      }
+      if (error.message.includes('rate_limited') || error.message.includes('429')) {
+        throw new Error('API 요청 한도를 초과했습니다. 잠시 후 다시 시도해주세요.');
       }
     }
 

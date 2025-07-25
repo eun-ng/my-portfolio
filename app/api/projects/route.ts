@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getProjects, ApiError } from '@/lib/notion';
 
-export const revalidate = 1800;
+export const revalidate = 900; // 15분으로 단축
 
 export async function GET() {
   try {
@@ -9,7 +9,7 @@ export async function GET() {
 
     return NextResponse.json(projects, {
       headers: {
-        'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=3600',
+        'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=1800, stale-if-error=86400',
       },
     });
   } catch (error) {
@@ -21,6 +21,11 @@ export async function GET() {
       hasData: false,
     };
 
-    return NextResponse.json(errorResponse, { status: 500 });
+    return NextResponse.json(errorResponse, { 
+      status: 500,
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+      },
+    });
   }
 }

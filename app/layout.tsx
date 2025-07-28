@@ -19,15 +19,15 @@ const pretendard = localFont({
   variable: '--font-pretendard',
   display: 'swap',
   preload: true,
-  fallback: ['system-ui', 'arial']
+  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
-  title: 'Eun-Ng',
+  title: '남궁은 | Front End Developer',
   description:
     '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자 남궁은의 포트폴리오입니다.',
   keywords: ['남궁은', '프론트엔드', 'React', 'TypeScript', 'Next.js', 'Tailwind CSS', '포트폴리오', '개발자'],
-  authors: [{ name: '남궁은', url: 'https://github.com/Eun-Ng' }],
+  authors: [{ name: '남궁은', url: 'https://github.com/eun-ng' }],
   creator: '남궁은',
   publisher: '남궁은',
   formatDetection: {

@@ -22,7 +22,7 @@ export const SOCIAL_ICONS = [
         <path d="M9 18c-4.51 2-5-2-7-2" />
       </svg>
     ),
-    url: 'https://github.com/Eun-Ng',
+    url: 'https://github.com/eun-ng',
     label: 'GitHub 프로필',
   },
   {

@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getProjects, ApiError } from '@/lib/notion';
 
-export const runtime = 'edge';
 export const revalidate = 3600; // 1시간으로 연장
 
 export async function GET() {

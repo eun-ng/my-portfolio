@@ -14,7 +14,7 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
     return (
       <a href={career.url} target="_blank" rel="noopener noreferrer">
         <Card
-          className={`max-w-2xl bg-transparent cursor-pointer transition-all duration-300 ${
+          className={`max-w-2xl bg-transparent cursor-pointer transition-all duration-300 border-0 shadow-none ${
             isHovered(career.id)
               ? 'border border-accent shadow-xl shadow-accent/20 bg-accent/5 scale-[1.02]'
               : 'border border-transparent hover:bg-accent/5'
@@ -48,7 +48,7 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
   }
 
   return (
-    <Card className="max-w-2xl bg-transparent border-transparent">
+    <Card className="bg-transparent border-0 shadow-none">
       <CardHeader className="pb-4">
         <a href={career.url} target="_blank" rel="noopener noreferrer">
           <div className="flex justify-between items-center hover:text-primary transition-colors group -m-2 p-2 rounded">

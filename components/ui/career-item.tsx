@@ -51,7 +51,7 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
     <Card className="bg-transparent border-0 shadow-none">
       <CardHeader className="pb-4">
         <a href={career.url} target="_blank" rel="noopener noreferrer">
-          <div className="flex justify-between items-center hover:text-primary transition-colors group -m-2 p-2 rounded">
+          <div className="flex justify-between hover:text-primary transition-colors group -m-2 p-2 rounded">
             <div className="flex flex-col">
               <CardTitle className="text-lg lg:text-xl group-hover:underline group-hover:decoration-primary/30">
                 {career.company}

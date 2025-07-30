@@ -1,4 +1,4 @@
-import { ExternalLinkIcon, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const ICON_STYLES = 'text-gray-300 hover:text-gray-50 transition-colors w-4 h-4 lg:w-6 lg:h-6';
 
@@ -30,11 +30,5 @@ export const SOCIAL_ICONS = [
     icon: <Mail className={ICON_STYLES} />,
     url: 'mailto:eunng.dev@gmail.com',
     label: '이메일',
-  },
-  {
-    id: 3,
-    icon: <ExternalLinkIcon className={ICON_STYLES} />,
-    url: 'https://eun-ng.notion.site/0e69c7127a234655b3246be33c78ced1?v=45bec4ef31764e4f9364bd7a94795169&pvs=74',
-    label: 'Notion 포트폴리오',
   },
 ];

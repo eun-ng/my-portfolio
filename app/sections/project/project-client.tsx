@@ -1,11 +1,11 @@
 'use client';
 import { motion } from 'framer-motion';
-import { NotionPropertiesProps } from '@/lib/notion';
+import { Project } from '@/lib/projects';
 import useHoverCard from '@/app/hooks/useHoverCard';
 import { ProjectItem } from '@/components/ui/project-item';
 
 interface ProjectClientProps {
-  projects: NotionPropertiesProps[];
+  projects: Project[];
 }
 
 const ProjectClient = ({ projects }: ProjectClientProps) => {
@@ -35,7 +35,7 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
 
   return (
     <div className="space-y-6">
-      {projects?.map((project: NotionPropertiesProps, index: number) => (
+      {projects?.map((project: Project, index: number) => (
         <motion.div
           key={project.id}
           initial={{ opacity: 0, y: 50 }}

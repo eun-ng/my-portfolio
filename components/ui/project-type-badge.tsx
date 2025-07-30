@@ -1,9 +1,7 @@
 import { Badge } from '@/components/ui/badge';
 import { getProjectTypeInfo } from '@/lib/constants/project';
-import { StackItem } from '@/lib/types/stack';
-
 interface ProjectTypeBadgeProps {
-  projectType?: StackItem[];
+  projectType?: string[];
 }
 
 export const ProjectTypeBadge = ({ projectType }: ProjectTypeBadgeProps) => {
@@ -16,7 +14,7 @@ export const ProjectTypeBadge = ({ projectType }: ProjectTypeBadgeProps) => {
   return (
     <Badge
       variant="outline"
-      className={`text-xs ${typeInfo.textColor} ${typeInfo.bgColor} border ${typeInfo.borderColor} px-2 py-0.5`}
+      className={`text-xs ${typeInfo.textColor} ${typeInfo.bgColor} border ${typeInfo.borderColor} px-2 py-0.5 flex-shrink-0 h-fit`}
     >
       {typeInfo.icon} {typeInfo.label}
     </Badge>

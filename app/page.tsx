@@ -4,10 +4,9 @@ import IntroSection from './sections/intro';
 import ProjectSection from './sections/project/project';
 import CareerSection from './sections/career/career';
 import { ScrollSpyNav } from './components/ScrollSpyNav';
-import { getProjects } from '@/lib/notion';
+import { getProjects } from '@/lib/projects';
 import ProjectSkeleton from '@/components/ui/project-skeleton';
 
-export const revalidate = 3600;
 
 const ProjectSectionWrapper = async () => {
   try {

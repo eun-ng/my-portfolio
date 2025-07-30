@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 31536000,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'pbnorsjxdmnytmjr.public.blob.vercel-storage.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
 
   experimental: {

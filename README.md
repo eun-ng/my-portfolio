@@ -8,14 +8,14 @@
 - **언어**: TypeScript
 - **스타일링**: Tailwind CSS, shadcn/ui
 - **애니메이션**: Framer Motion
-- **데이터**: Notion API
+- **데이터**: Markdown
 - **배포**: Vercel
 - **폰트**: Pretendard
 
 ## ✨ 주요 기능
 
 - 반응형 디자인
-- Notion API를 통한 동적 프로젝트 데이터 관리
+- 마크다운을 통한 프로젝트 데이터 관리
 - Scroll Spy 컨텐츠 섹션 네비게이션
 - Framer Motion을 활용한 부드러운 애니메이션
 - SEO 최적화 및 성능 최적화
@@ -32,8 +32,10 @@ my-portfolio/
 │   └── page.tsx          # 메인 페이지
 ├── components/           # UI 컴포넌트
 │   └── ui/               # shadcn/ui 컴포넌트, 커스텀 ui 컴포넌트
+├── content/              # 마크다운 데이터
+│   └── projects/         # 프로젝트 마크다운 파일들
 ├── lib/                  # 유틸리티 및 설정
-│   ├── notion.ts         # Notion API 클라이언트
+│   ├── projects.ts       # 프로젝트 데이터 로더
 │   └── types/            # TypeScript 타입 정의
 └── public/               # 정적 파일
 ```
@@ -42,4 +44,4 @@ my-portfolio/
 
 - **Intro**: 개발자 소개
 - **Career**: 업무 경험 및 성과
-- **Projects**: 개인/팀/회사 프로젝트 포트폴리오 (Notion 연동)
+- **Projects**: 개인/팀/회사 프로젝트 포트폴리오 (마크다운 기반)

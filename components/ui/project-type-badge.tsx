@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { getProjectTypeInfo } from '@/lib/constants/project';
+import { getProjectTypeInfo } from '@/constants/project';
 interface ProjectTypeBadgeProps {
   projectType?: string[];
 }

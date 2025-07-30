@@ -1,12 +1,11 @@
 import { Suspense } from 'react';
-import { SOCIAL_ICONS } from './constants/icons';
+import { SOCIAL_ICONS } from '@/constants/icons';
 import IntroSection from './sections/intro';
 import ProjectSection from './sections/project/project';
 import CareerSection from './sections/career/career';
 import { ScrollSpyNav } from './components/ScrollSpyNav';
 import { getProjects } from '@/lib/projects';
 import ProjectSkeleton from '@/components/ui/project-skeleton';
-
 
 const ProjectSectionWrapper = async () => {
   try {

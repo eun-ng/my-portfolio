@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowUpRight } from 'lucide-react';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { CareerInfo } from '@/app/sections/career/career';
 
 interface CareerItemProps {
@@ -37,7 +37,7 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
                   ease: 'easeOut',
                 }}
               >
-                <ArrowUpRight size={16} />
+                <FiArrowUpRight size={16} />
               </motion.div>
             </div>
             <CardDescription className="lg:text-base">{career.description}</CardDescription>
@@ -58,7 +58,7 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
               </CardTitle>
               <p className="text-sm text-body-text font-medium">{career.jd}</p>
             </div>
-            <ArrowUpRight size={16} />
+            <FiArrowUpRight size={16} />
           </div>
         </a>
         <p className="text-sm text-muted-foreground mt-2">{`${career.startDate} - ${career.endDate}`}</p>

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, ExternalLink, GitBranch } from 'lucide-react';
+import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
@@ -9,6 +9,7 @@ import rehypeRaw from 'rehype-raw';
 import { getProjectBySlug, getAllProjectSlugs } from '@/lib/projects';
 import { Badge } from '@/components/ui/badge';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
+import { FaGithub } from 'react-icons/fa';
 
 export async function generateStaticParams() {
   const slugs = await getAllProjectSlugs();
@@ -30,7 +31,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           href="/#projects"
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
-          <ArrowLeft size={16} />
+          <FiArrowLeft size={16} />
           프로젝트 목록으로 돌아가기
         </Link>
 
@@ -57,7 +58,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
-                <ExternalLink size={16} />
+                <FiExternalLink size={16} />
                 프로젝트 보기
               </a>
             )}
@@ -68,7 +69,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-accent transition-colors"
               >
-                <GitBranch size={16} />
+                <FaGithub size={16} />
                 GitHub
               </a>
             )}
@@ -109,9 +110,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   <h3 className="text-base lg:text-xl font-semibold mt-4 mb-2 text-foreground">{children}</h3>
                 ),
                 p: ({ children }) => (
-                  <p className="text-sm lg:text-base leading-6 lg:leading-7 mb-3 lg:mb-4 text-body-text">
-                    {children}
-                  </p>
+                  <p className="text-sm lg:text-base leading-6 lg:leading-7 mb-3 lg:mb-4 text-body-text">{children}</p>
                 ),
                 ul: ({ children }) => <ul className="list-disc list-inside mb-3 lg:mb-4 space-y-1">{children}</ul>,
                 ol: ({ children }) => <ol className="list-decimal list-inside mb-3 lg:mb-4 space-y-1">{children}</ol>,

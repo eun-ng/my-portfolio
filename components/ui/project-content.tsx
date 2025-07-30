@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { CardDescription, CardTitle } from '@/components/ui/card';
-import { ArrowUpRight } from 'lucide-react';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { Project } from '@/lib/projects';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
 import { StackBadges } from '@/components/ui/stack-badges';
@@ -53,7 +53,7 @@ export const ProjectContent = ({ project, index, isHovered }: ProjectContentProp
             ease: 'easeOut',
           }}
         >
-          <ArrowUpRight size={16} />
+          <FiArrowUpRight size={16} />
         </motion.div>
       </div>
       <div className="pt-3">

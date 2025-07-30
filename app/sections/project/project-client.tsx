@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Project } from '@/lib/projects';
-import useHoverCard from '@/app/hooks/useHoverCard';
+import useHoverCard from '@/hooks/useHoverCard';
 import { ProjectItem } from '@/components/ui/project-item';
 
 interface ProjectClientProps {

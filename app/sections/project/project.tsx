@@ -1,8 +1,8 @@
-import { NotionPropertiesProps } from '@/lib/notion';
+import { Project } from '@/lib/projects';
 import ProjectClient from './project-client';
 
 interface ProjectSectionProps {
-  projects?: NotionPropertiesProps[];
+  projects?: Project[];
 }
 
 const ProjectSection = ({ projects: initialProjects }: ProjectSectionProps) => {

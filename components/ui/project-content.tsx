@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import { CardDescription, CardTitle } from '@/components/ui/card';
 import { ArrowUpRight } from 'lucide-react';
-import { NotionPropertiesProps } from '@/lib/notion';
+import { Project } from '@/lib/projects';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
 import { StackBadges } from '@/components/ui/stack-badges';
 
 interface ProjectContentProps {
-  project: NotionPropertiesProps;
+  project: Project;
   index: number;
   isHovered: (id: string) => boolean;
 }

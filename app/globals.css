@@ -148,3 +148,25 @@
   border-color: var(--metallic-silver);
   box-shadow: 0 0 20px rgba(192, 192, 192, 0.5), 0 0 30px rgba(16, 185, 129, 0.3);
 }
+
+/* 마크다운 중첩 리스트 스타일 */
+.prose ul ul,
+.prose ol ol,
+.prose ul ol,
+.prose ol ul {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ul ul {
+  list-style-type: circle;
+}
+
+.prose ul ul ul {
+  list-style-type: square;
+}

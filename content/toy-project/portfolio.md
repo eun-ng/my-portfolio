@@ -1,6 +1,31 @@
-# 포트폴리오
+---
+title: '포트폴리오 사이트'
+description: 'Next.js 15와 TypeScript로 구축한 마크다운 기반 포트폴리오 사이트'
+projectType:
+  - 'Toy Project'
+period: '2025-07-12 - 2025-07-30'
+github: 'https://github.com/eun-ng/my-portfolio'
+stacks:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'Tailwind CSS'
+  - 'shadcn/ui'
+  - 'Framer Motion'
+  - 'Vercel'
+  - 'ESLint'
+  - 'Prettier'
+process: 'Done'
+---
 
-프론트엔드 개발자 남궁은의 개인 포트폴리오 사이트입니다.
+# 개인 포트폴리오 사이트
+
+## 프로젝트 개요
+
+Next.js 15와 TypeScript를 활용하여 구축한 개인 포트폴리오 사이트입니다. 정적 컨텐츠가 많은 포트폴리오 사이트 특성상 마크다운을 활용해 컨텐츠를 관리했고, Next.js를 활용해 최적화와 SEO 성능을 개선했습니다.
+
+## 개발 기간
+
+2025.07.12 ~ 2025.07.30
 
 ## 🚀 기술 스택
 
@@ -10,6 +35,7 @@
 - **애니메이션**: Framer Motion
 - **배포**: Vercel
 - **폰트**: Pretendard
+- **품질 관리**: ESLint, Prettier
 
 ## ✨ 주요 기능
 
@@ -23,7 +49,7 @@
 
 - **반응형 디자인**: 모바일 우선 설계로 모든 디바이스 완벽 대응
 - **애니메이션**: Framer Motion 기반 인터랙션 효과
-- **일관된 타이포그래피**: Pretendard 사용으로 통일화
+- **일관된 타이포그래피**: Pretendard 폰트 사용으로 통일화
 - **shadcn/ui**: 일관된 디자인 시스템
 
 ### ⚡ 성능 최적화
@@ -46,16 +72,7 @@
 - **Google Analytics**: 사용자 행동 분석 및 성과 측정
 - **Core Web Vitals**: 웹 성능 지표 최적화
 
-## 📱 주요 섹션
-
-- **Intro**: 소개 및 핵심 역량
-- **Career**: 업무 경험 및 주요 성과
-- **Projects**: 개인/팀/회사 프로젝트 포트폴리오
-  - 각 프로젝트는 마크다운 파일로 관리
-  - `/projects/[slug]` 경로로 프로젝트 상세 페이지
-  - 프로젝트 타입별 분류 (Company, Team Project, Toy Project)
-
-## 🏗️ 프로젝트 구조
+## 프로젝트 구조
 
 ```
 my-portfolio/
@@ -94,8 +111,63 @@ my-portfolio/
     └── sitemap.xml           # 사이트맵
 ```
 
-## 🌐 배포 환경
+## 마크다운 파일 구조
 
-- **Vercel**: 자동 배포 및 CDN 최적화
-- **도메인**: 커스텀 도메인 연결
-- **환경 변수**: Google Analytics 등 외부 서비스 연동
+마크다운 컨텐츠는 다음과 같은 `front matter`를 가진 구조입니다.
+
+```markdown
+---
+title: '프로젝트 제목'
+description: '프로젝트 설명'
+projectType: ['Company', 'Team Project', 'Toy Project']
+period: '2025.06 - 2025.07'
+stacks: ['React', 'Next.js', 'TypeScript']
+url: 'https://my-url.com'
+github: 'https://github.com/my/repo'
+process: 'Done'
+---
+
+# 프로젝트 내용 (마크다운)
+
+- nested list 지원
+- 코드 블록 하이라이팅
+- 이미지 및 링크 최적화
+```
+
+## 🎯 주요 개발 이슈 & 해결
+
+### Notion API → 마크다운 시스템 전환
+
+초기 Notion API 기반 시스템의 한계점 발견 후 마크다운 구조로 전환한 과정
+
+#### 기존 문제점
+
+- **성능 이슈**: Notion API 호출 지연 (평균 500-1000ms)
+- **안정성 이슈**: 외부 API 의존성으로 인한 서비스 불안정성
+- **복잡성**: 데이터 파싱 및 변환 로직의 복잡도 증가
+
+#### 마크다운 전환 결과
+
+- **성능 개선**: API 호출 제거로 응답 속도 50ms 이하로 개선
+- **안정성 향상**: 외부 의존성 제거로 서비스 안정성 확보
+- **유지보수성 향상**: 마크다운 기반 단순한 파일 구조로 관리 복잡도 감소
+
+### Next.js 정적 생성 최적화
+
+SEO 최적화와 성능 향상을 위한 정적 생성과 동적 라우팅 구현
+
+#### 주요 구현사항
+
+- `generateStaticParams`를 통한 빌드 타임 페이지 생성
+- `generateMetadata`를 통한 동적 메타데이터 생성
+- 마크다운 파일 기반 자동 경로 생성
+- React `cache()` 함수를 활용한 파일 읽기 최적화
+
+## 성과 지표
+
+### 성능 지표 개선
+
+- 응답 속도: Notion API 제거로 500-1000ms → **50ms 이하로 개선**
+- 초기 로딩: Next.js 정적 생성으로 **평균 1초 이내 로딩**
+- 번들 크기: Notion SDK 제거로 JavaScript 번들 크기 **약 100KB 감소**
+- SEO 최적화: Google PageSpeed Insights **90점 이상**

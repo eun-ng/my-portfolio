@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import useHoverCard from '@/app/hooks/useHoverCard';
+import useHoverCard from '@/hooks/useHoverCard';
 import { CareerItem } from '@/components/ui/career-item';
 import { CareerInfo } from './career';
 

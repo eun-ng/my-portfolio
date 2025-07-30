@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { SectionId } from '@/app/constants/navigation';
+import { SectionId } from '@/constants/navigation';
 
 interface UseScrollSpyOptions {
   offset?: number;

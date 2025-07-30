@@ -1,8 +1,24 @@
 'use client';
-import { useScrollSpy } from '@/app/hooks/useScrollSpy';
-import { NAVIGATION_SECTIONS } from '@/app/constants/navigation';
-import { scrollToSection } from '@/app/utils/scrollUtils';
+import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { NAVIGATION_SECTIONS, SectionId } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
+
+const scrollToSection = (sectionId: SectionId) => {
+  const element = document.getElementById(sectionId);
+  if (!element) return;
+
+  if (sectionId === 'intro') {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  } else {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
 
 export const ScrollSpyNav = () => {
   const activeSection = useScrollSpy(NAVIGATION_SECTIONS.map((section) => section.id));

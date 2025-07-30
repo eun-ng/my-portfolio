@@ -1,5 +1,5 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowUpRight } from 'lucide-react';
+import { FiArrowUpRight } from 'react-icons/fi';
 import Link from 'next/link';
 import { Project } from '@/lib/projects';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
@@ -40,7 +40,7 @@ export const ProjectItem = ({ project, index, isDesktop, isHovered }: ProjectIte
             <CardTitle className="text-lg lg:text-xl group-hover:underline group-hover:decoration-primary/30">
               {project.title}
             </CardTitle>
-            <ArrowUpRight size={16} />
+            <FiArrowUpRight size={16} />
           </div>
         </Link>
         <div className={`flex flex-col ${project.description ? 'gap-1.5' : 'gap-0'} mb-3`}>

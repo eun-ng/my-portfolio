@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { cache } from 'react';
 
 export interface Project {
   id: string;
@@ -24,7 +25,7 @@ interface ProjectFrontmatter {
   github?: string;
 }
 
-async function getAllMarkdownFiles(dir: string): Promise<string[]> {
+const getAllMarkdownFiles = cache(async (dir: string): Promise<string[]> => {
   const files: string[] = [];
   const items = await fs.readdir(dir, { withFileTypes: true });
 
@@ -40,11 +41,11 @@ async function getAllMarkdownFiles(dir: string): Promise<string[]> {
   }
 
   return files;
-}
+});
 
 const CONTENT_DIR = path.join(process.cwd(), 'content');
 
-export async function getProjects(): Promise<Project[]> {
+export const getProjects = cache(async (): Promise<Project[]> => {
   try {
     const markdownFiles = await getAllMarkdownFiles(CONTENT_DIR);
 
@@ -82,9 +83,9 @@ export async function getProjects(): Promise<Project[]> {
     console.error('Markdown 파일 읽기 오류:', error);
     return [];
   }
-}
+});
 
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
+export const getProjectBySlug = cache(async (slug: string): Promise<Project | null> => {
   try {
     const allFiles = await getAllMarkdownFiles(CONTENT_DIR);
 
@@ -114,13 +115,13 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     console.error('프로젝트 파일 읽기 오류:', error);
     return null;
   }
-}
+});
 
-export async function getAllProjectSlugs(): Promise<string[]> {
+export const getAllProjectSlugs = cache(async (): Promise<string[]> => {
   try {
     const allFiles = await getAllMarkdownFiles(CONTENT_DIR);
     return allFiles.map((file) => path.basename(file, '.md'));
   } catch {
     return [];
   }
-}
+});

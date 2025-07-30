@@ -4,7 +4,6 @@ description: '슬랙 클론 프로젝트'
 projectType:
   - 'Toy Project'
 period: '2022-10-28 - 2022-12-04'
-github: 'https://github.com/eun-ng/slack_clone.git'
 stacks:
   - 'Babel'
   - 'ESLint'

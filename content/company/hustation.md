@@ -74,12 +74,12 @@ process: 'Done'
 
 ### **프로젝트 내역**
 
-- Next.js v13 Pages Router -> Next.js v14 App Router 마이그레이션
+- Next.js v13 Pages Router → Next.js v14 App Router 마이그레이션
   - 폴더 기반 라우팅으로 직관적인 구조 파악 가능
   - 컴포넌트 계층 구조 나누어 관심사 분리
   - 기존 Container-Presenter으로 복잡했던 구조 개선
 - 로컬 개발 환경 속도 개선
-  - Next.js v13 -> Next.js v14 turbopack 사용으로 로컬 개발 속도 증가
+  - Next.js v13 → Next.js v14 turbopack 사용으로 로컬 개발 속도 증가
 - 이미지, 폰트 최적화 문제 개선
   - Next.js v14 이미지, 폰트 최적화
   - 번들 사이즈 최적화

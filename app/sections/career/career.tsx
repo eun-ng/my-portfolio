@@ -39,7 +39,7 @@ const CAREER_INFO: CareerInfo[] = [
           <li>
             채용 솔루션 FAIRY 개발
             <ul className="list-disc pl-5 mt-1 space-y-1">
-              <li>JavaScript {`->`} TypeScript로 마이그레이션</li>
+              <li>JavaScript {`→`} TypeScript로 마이그레이션</li>
               <li>공통 컴포넌트, 레이아웃 설계 및 개발</li>
               <li>레거시 코드 리팩토링 & 신규 기능 개발</li>
             </ul>
@@ -55,7 +55,7 @@ const CAREER_INFO: CareerInfo[] = [
           <li>
             채용 솔루션 FAIRY 기업용 채용 홈페이지 마이그레이션
             <ul className="list-disc pl-5 mt-1 space-y-1">
-              <li>Next.js v13 pages router {`->`} v14 app router로 마이그레이션</li>
+              <li>Next.js v13 pages router {`→`} v14 app router로 마이그레이션</li>
               <li>Turbopack 사용으로 로컬 개발 환경 속도 개선</li>
               <li>이미지, 폰트 최적화 문제 개선</li>
               <li>프리 렌더링 & SEO 개선</li>

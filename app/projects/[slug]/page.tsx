@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
@@ -92,7 +92,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
         {project.content && (
           <article className="prose prose-slate dark:prose-invert max-w-none">
-            <ReactMarkdown
+            <Markdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight, rehypeRaw]}
               components={{
@@ -152,7 +152,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               }}
             >
               {project.content}
-            </ReactMarkdown>
+            </Markdown>
           </article>
         )}
       </div>

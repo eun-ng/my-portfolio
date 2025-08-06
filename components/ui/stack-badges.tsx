@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
+
 interface StackBadgesProps {
   stacks?: string[];
   showAnimation?: boolean;
   animationDelay?: number;
 }
 
-export const StackBadges = ({ stacks, showAnimation = false, animationDelay = 0 }: StackBadgesProps) => {
+export const StackBadges = ({
+  stacks,
+  showAnimation = false,
+  animationDelay = 0,
+}: StackBadgesProps) => {
   if (!stacks || stacks.length === 0) {
     return null;
   }

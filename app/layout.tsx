@@ -26,7 +26,16 @@ export const metadata: Metadata = {
   title: '남궁은 | Front End Developer',
   description:
     '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자 남궁은의 포트폴리오입니다.',
-  keywords: ['남궁은', '프론트엔드', 'React', 'TypeScript', 'Next.js', 'Tailwind CSS', '포트폴리오', '개발자'],
+  keywords: [
+    '남궁은',
+    '프론트엔드',
+    'React',
+    'TypeScript',
+    'Next.js',
+    'Tailwind CSS',
+    '포트폴리오',
+    '개발자',
+  ],
   authors: [{ name: '남궁은', url: 'https://github.com/eun-ng' }],
   creator: '남궁은',
   publisher: '남궁은',
@@ -41,7 +50,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: '남궁은 | Front End Developer',
-    description: '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
+    description:
+      '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
     url: 'https://eunng.com',
     siteName: '남궁은 포트폴리오',
     images: [
@@ -58,7 +68,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '남궁은 | Front End Developer',
-    description: '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
+    description:
+      '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
     images: ['/og-image.png'],
   },
   robots: {

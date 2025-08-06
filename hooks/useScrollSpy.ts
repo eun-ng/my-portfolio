@@ -1,13 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { SectionId } from '@/constants/navigation';
+import type { SectionId } from '@/constants/navigation';
 
 interface UseScrollSpyOptions {
   offset?: number;
   topThreshold?: number;
 }
 
-export const useScrollSpy = (sectionIds: SectionId[], options: UseScrollSpyOptions = {}) => {
+export const useScrollSpy = (
+  sectionIds: SectionId[],
+  options: UseScrollSpyOptions = {}
+) => {
   const { offset = 100, topThreshold = 50 } = options;
   const [activeSection, setActiveSection] = useState<SectionId>(sectionIds[0]);
 

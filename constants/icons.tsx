@@ -1,7 +1,8 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
-const ICON_STYLES = 'text-gray-300 hover:text-gray-50 transition-colors w-4 h-4 lg:w-6 lg:h-6';
+const ICON_STYLES =
+  'text-gray-300 hover:text-gray-50 transition-colors w-4 h-4 lg:w-6 lg:h-6';
 
 export const SOCIAL_ICONS = [
   {

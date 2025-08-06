@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { CareerInfo } from '@/app/sections/career/career';
+import type { CareerInfo } from '@/app/sections/career/career';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 interface CareerItemProps {
   career: CareerInfo;
@@ -9,7 +14,11 @@ interface CareerItemProps {
   isHovered: (id: string) => boolean;
 }
 
-export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) => {
+export const CareerItem = ({
+  career,
+  isDesktop,
+  isHovered,
+}: CareerItemProps) => {
   if (isDesktop) {
     return (
       <a href={career.url} target="_blank" rel="noopener noreferrer">
@@ -23,8 +32,12 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
           <CardHeader>
             <div className="flex justify-between items-start">
               <div className="flex flex-col gap-1">
-                <CardTitle className="text-xl lg:text-2xl">{career.company}</CardTitle>
-                <p className="text-sm lg:text-base text-body-text font-medium">{career.jd}</p>
+                <CardTitle className="text-xl lg:text-2xl">
+                  {career.company}
+                </CardTitle>
+                <p className="text-sm lg:text-base text-body-text font-medium">
+                  {career.jd}
+                </p>
                 <p className="text-sm lg:text-base text-muted-foreground">{`${career.startDate} - ${career.endDate}`}</p>
               </div>
               <motion.div
@@ -40,7 +53,9 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
                 <FiArrowUpRight size={16} />
               </motion.div>
             </div>
-            <CardDescription className="lg:text-base">{career.description}</CardDescription>
+            <CardDescription className="lg:text-base">
+              {career.description}
+            </CardDescription>
           </CardHeader>
         </Card>
       </a>
@@ -62,7 +77,9 @@ export const CareerItem = ({ career, isDesktop, isHovered }: CareerItemProps) =>
           </div>
         </a>
         <p className="text-sm text-muted-foreground mt-2">{`${career.startDate} - ${career.endDate}`}</p>
-        <CardDescription className="text-sm mt-2">{career.description}</CardDescription>
+        <CardDescription className="text-sm mt-2">
+          {career.description}
+        </CardDescription>
       </CardHeader>
     </Card>
   );

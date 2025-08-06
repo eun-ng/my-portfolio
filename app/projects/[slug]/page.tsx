@@ -1,22 +1,26 @@
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { FaGithub } from 'react-icons/fa';
 import { FiArrowLeft, FiExternalLink } from 'react-icons/fi';
 import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
-import { getProjectBySlug, getAllProjectSlugs } from '@/lib/projects';
+import remarkGfm from 'remark-gfm';
 import { Badge } from '@/components/ui/badge';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
-import { FaGithub } from 'react-icons/fa';
+import { getAllProjectSlugs, getProjectBySlug } from '@/lib/projects';
 
 export async function generateStaticParams() {
   const slugs = await getAllProjectSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
 
@@ -40,13 +44,21 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="flex flex-col gap-4 mb-6">
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-                <h1 className="text-3xl lg:text-4xl font-bold">{project.title}</h1>
+                <h1 className="text-3xl lg:text-4xl font-bold">
+                  {project.title}
+                </h1>
                 <ProjectTypeBadge projectType={project.projectType} />
               </div>
-              {project.description && <p className="text-lg text-muted-foreground">{project.description}</p>}
+              {project.description && (
+                <p className="text-lg text-muted-foreground">
+                  {project.description}
+                </p>
+              )}
             </div>
 
-            {project.period && <p className="text-sm text-muted-foreground">{project.period}</p>}
+            {project.period && (
+              <p className="text-sm text-muted-foreground">{project.period}</p>
+            )}
           </div>
 
           {/* 링크 버튼들 */}
@@ -81,7 +93,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <h3 className="text-lg font-semibold mb-3">기술 스택</h3>
               <div className="flex flex-wrap gap-2">
                 {project.stacks.map((stack) => (
-                  <Badge key={stack} variant="outline" className="text-xs text-accent bg-accent/10 border-accent/30">
+                  <Badge
+                    key={stack}
+                    variant="outline"
+                    className="text-xs text-accent bg-accent/10 border-accent/30"
+                  >
                     {stack}
                   </Badge>
                 ))}
@@ -107,28 +123,54 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-base lg:text-xl font-semibold mt-4 mb-2 text-foreground">{children}</h3>
+                  <h3 className="text-base lg:text-xl font-semibold mt-4 mb-2 text-foreground">
+                    {children}
+                  </h3>
                 ),
                 p: ({ children }) => (
-                  <p className="text-sm lg:text-base leading-6 lg:leading-7 mb-3 lg:mb-4 text-body-text">{children}</p>
+                  <p className="text-sm lg:text-base leading-6 lg:leading-7 mb-3 lg:mb-4 text-body-text">
+                    {children}
+                  </p>
                 ),
-                ul: ({ children }) => <ul className="list-disc list-inside mb-3 lg:mb-4 space-y-1">{children}</ul>,
-                ol: ({ children }) => <ol className="list-decimal list-inside mb-3 lg:mb-4 space-y-1">{children}</ol>,
+                ul: ({ children }) => (
+                  <ul className="list-disc list-inside mb-3 lg:mb-4 space-y-1">
+                    {children}
+                  </ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="list-decimal list-inside mb-3 lg:mb-4 space-y-1">
+                    {children}
+                  </ol>
+                ),
                 li: ({ children }) => (
-                  <li className="text-sm lg:text-base leading-6 lg:leading-7 text-body-text">{children}</li>
+                  <li className="text-sm lg:text-base leading-6 lg:leading-7 text-body-text">
+                    {children}
+                  </li>
                 ),
                 blockquote: ({ children }) => (
-                  <blockquote className="font-bold border-l-4 border-accent pl-4 mb-4">{children}</blockquote>
+                  <blockquote className="font-bold border-l-4 border-accent pl-4 mb-4">
+                    {children}
+                  </blockquote>
                 ),
-                hr: () => <hr className="my-6 lg:my-8 border-0 border-t border-border" />,
+                hr: () => (
+                  <hr className="my-6 lg:my-8 border-0 border-t border-border" />
+                ),
                 code: ({ children, className }) => {
                   const isInline = !className;
                   if (isInline) {
-                    return <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>;
+                    return (
+                      <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">
+                        {children}
+                      </code>
+                    );
                   }
                   return <code className={className}>{children}</code>;
                 },
-                pre: ({ children }) => <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4">{children}</pre>,
+                pre: ({ children }) => (
+                  <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4">
+                    {children}
+                  </pre>
+                ),
                 img: ({ src, alt }) => (
                   <Image
                     src={(src as string) || ''}

@@ -1,10 +1,15 @@
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { FiArrowUpRight } from 'react-icons/fi';
 import Link from 'next/link';
-import { Project } from '@/lib/projects';
+import { FiArrowUpRight } from 'react-icons/fi';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { ProjectContent } from '@/components/ui/project-content';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
 import { StackBadges } from '@/components/ui/stack-badges';
-import { ProjectContent } from '@/components/ui/project-content';
+import type { Project } from '@/lib/projects';
 
 interface ProjectItemProps {
   project: Project;
@@ -13,7 +18,12 @@ interface ProjectItemProps {
   isHovered: (id: string) => boolean;
 }
 
-export const ProjectItem = ({ project, index, isDesktop, isHovered }: ProjectItemProps) => {
+export const ProjectItem = ({
+  project,
+  index,
+  isDesktop,
+  isHovered,
+}: ProjectItemProps) => {
   if (isDesktop) {
     return (
       <Link href={`/projects/${project.id}`}>
@@ -25,7 +35,11 @@ export const ProjectItem = ({ project, index, isDesktop, isHovered }: ProjectIte
           }`}
         >
           <CardHeader>
-            <ProjectContent project={project} index={index} isHovered={isHovered} />
+            <ProjectContent
+              project={project}
+              index={index}
+              isHovered={isHovered}
+            />
           </CardHeader>
         </Card>
       </Link>
@@ -43,9 +57,13 @@ export const ProjectItem = ({ project, index, isDesktop, isHovered }: ProjectIte
             <FiArrowUpRight size={16} />
           </div>
         </Link>
-        <div className={`flex flex-col ${project.description ? 'gap-1.5' : 'gap-0'} mb-3`}>
+        <div
+          className={`flex flex-col ${project.description ? 'gap-1.5' : 'gap-0'} mb-3`}
+        >
           <ProjectTypeBadge projectType={project.projectType} />
-          {project.description && <CardDescription>{project.description}</CardDescription>}
+          {project.description && (
+            <CardDescription>{project.description}</CardDescription>
+          )}
         </div>
         <StackBadges stacks={project.stacks} />
       </CardHeader>

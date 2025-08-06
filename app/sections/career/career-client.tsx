@@ -1,11 +1,17 @@
 'use client';
 import { motion } from 'framer-motion';
-import useHoverCard from '@/hooks/useHoverCard';
 import { CareerItem } from '@/components/ui/career-item';
-import { CareerInfo } from './career';
+import useHoverCard from '@/hooks/useHoverCard';
+import type { CareerInfo } from './career';
 
 const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
-  const { handleHoverStart, handleHoverEnd, isOtherHovered, isHovered, isDesktop } = useHoverCard();
+  const {
+    handleHoverStart,
+    handleHoverEnd,
+    isOtherHovered,
+    isHovered,
+    isDesktop,
+  } = useHoverCard();
 
   return (
     <div className="space-y-6">
@@ -26,7 +32,11 @@ const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
           onHoverStart={() => handleHoverStart(career.id)}
           onHoverEnd={handleHoverEnd}
         >
-          <CareerItem career={career} isDesktop={isDesktop} isHovered={isHovered} />
+          <CareerItem
+            career={career}
+            isDesktop={isDesktop}
+            isHovered={isHovered}
+          />
         </motion.div>
       ))}
     </div>

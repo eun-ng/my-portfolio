@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import GoogleAnalytics from './components/Analytics';
+import Gnb from './components/Gnb';
+import ThemeProvider from './components/ThemeProvider';
 
 const pretendard = localFont({
   src: [
@@ -95,10 +97,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={`${pretendard.variable} antialiased font-sans`}>
-        {children}
-        <GoogleAnalytics />
+    <html lang="ko" suppressHydrationWarning>
+      <head />
+      <body
+        className={`${pretendard.variable} antialiased font-sans bg-background text-foreground`}
+        suppressHydrationWarning
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+          disableTransitionOnChange={false}
+        >
+          <Gnb />
+          {children}
+          <GoogleAnalytics />
+        </ThemeProvider>
       </body>
     </html>
   );

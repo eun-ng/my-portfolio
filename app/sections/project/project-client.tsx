@@ -27,7 +27,9 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-label="No projects available"
             >
+              <title>No projects available</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

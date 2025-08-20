@@ -39,7 +39,6 @@ export default async function ProjectDetailPage({
           프로젝트 목록으로 돌아가기
         </Link>
 
-        {/* 프로젝트 헤더 */}
         <header className="mb-8">
           <div className="flex flex-col gap-4 mb-6">
             <div className="flex flex-col gap-3">
@@ -61,7 +60,6 @@ export default async function ProjectDetailPage({
             )}
           </div>
 
-          {/* 링크 버튼들 */}
           <div className="flex flex-wrap gap-3 mb-6">
             {project.url && (
               <a
@@ -87,7 +85,6 @@ export default async function ProjectDetailPage({
             )}
           </div>
 
-          {/* 기술 스택 */}
           {project.stacks && project.stacks.length > 0 && (
             <div className="mb-8">
               <h3 className="text-lg font-semibold mb-3">기술 스택</h3>

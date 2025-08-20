@@ -55,6 +55,7 @@ export const ScrollSpyNav = () => {
                 onClick={() => scrollToSection(section.id)}
                 className={getButtonClassName(isActive)}
                 aria-current={isActive ? 'page' : undefined}
+                type="button"
               >
                 <div className={getIndicatorClassName(isActive)} />
                 <span className="font-medium tracking-wide">

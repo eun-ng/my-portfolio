@@ -10,7 +10,7 @@ const Gnb = () => {
   };
 
   return (
-    <div className="flex justify-end p-4 z-100">
+    <div className="flex justify-end py-2 px-4 lg:p-4">
       <button
         className="cursor-pointer p-3 dark:text-gray-200 light:text-gray-800 text-xl w-12 h-12 flex items-center justify-center opacity-100 transition-opacity duration-200"
         onClick={handleChange}

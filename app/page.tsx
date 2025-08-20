@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
+import ProjectSkeleton from '@/components/ui/project-skeleton';
 import { SOCIAL_ICONS } from '@/constants/icons';
+import { getProjects } from '@/lib/projects';
+import { ScrollSpyNav } from './components/ScrollSpyNav';
+import CareerSection from './sections/career/career';
 import IntroSection from './sections/intro';
 import ProjectSection from './sections/project/project';
-import CareerSection from './sections/career/career';
-import { ScrollSpyNav } from './components/ScrollSpyNav';
-import { getProjects } from '@/lib/projects';
-import ProjectSkeleton from '@/components/ui/project-skeleton';
 
 const ProjectSectionWrapper = async () => {
   try {
@@ -40,7 +40,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.label}
-                className=" metallic-border p-2 rounded-lg inline-block lg:hover-glow lg:cursor-pointer"
+                className="social-icon-hover transition-colors metallic-border p-2 rounded-lg inline-block lg:hover-glow lg:cursor-pointer"
               >
                 {item.icon}
               </a>
@@ -56,11 +56,13 @@ export default function Home() {
         </Suspense>
         <footer className="mt-16 lg:mt-24 pt-8 border-t border-border/50">
           <p className="text-sm text-muted-foreground text-center lg:text-left">
-            <span className="text-white font-medium">Next.js</span>와{' '}
-            <span className="text-white font-medium">TypeScript</span>,{' '}
-            <span className="text-white font-medium">shadcn/ui</span>,{' '}
-            <span className="text-white font-medium">Tailwind CSS</span>를 사용해 개발하고{' '}
-            <span className="text-white font-medium">Vercel</span>을 사용하여 배포했습니다.
+            <span className="text-foreground font-medium">Next.js</span>와{' '}
+            <span className="text-foreground font-medium">TypeScript</span>,{' '}
+            <span className="text-foreground font-medium">shadcn/ui</span>,{' '}
+            <span className="text-foreground font-medium">Tailwind CSS</span>를
+            사용해 개발하고{' '}
+            <span className="text-foreground font-medium">Vercel</span>을
+            사용하여 배포했습니다.
           </p>
         </footer>
       </div>

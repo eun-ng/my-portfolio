@@ -1,6 +1,6 @@
 'use client';
+import { NAVIGATION_SECTIONS, type SectionId } from '@/constants/navigation';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
-import { NAVIGATION_SECTIONS, SectionId } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
 
 const scrollToSection = (sectionId: SectionId) => {
@@ -21,7 +21,9 @@ const scrollToSection = (sectionId: SectionId) => {
 };
 
 export const ScrollSpyNav = () => {
-  const activeSection = useScrollSpy(NAVIGATION_SECTIONS.map((section) => section.id));
+  const activeSection = useScrollSpy(
+    NAVIGATION_SECTIONS.map((section) => section.id)
+  );
 
   const getButtonClassName = (isActive: boolean) =>
     cn(
@@ -53,9 +55,12 @@ export const ScrollSpyNav = () => {
                 onClick={() => scrollToSection(section.id)}
                 className={getButtonClassName(isActive)}
                 aria-current={isActive ? 'page' : undefined}
+                type="button"
               >
                 <div className={getIndicatorClassName(isActive)} />
-                <span className="font-medium tracking-wide">{section.label}</span>
+                <span className="font-medium tracking-wide">
+                  {section.label}
+                </span>
                 {isActive && (
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg animate-pulse" />
                 )}

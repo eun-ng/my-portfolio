@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const useHoverCard = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -32,7 +32,8 @@ const useHoverCard = () => {
   };
 
   const isHovered = (id: string) => isDesktop && hoveredCard === id;
-  const isOtherHovered = (id: string) => isDesktop && hoveredCard && hoveredCard !== id;
+  const isOtherHovered = (id: string) =>
+    isDesktop && hoveredCard && hoveredCard !== id;
 
   return {
     hoveredCard,

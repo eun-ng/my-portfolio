@@ -1,4 +1,3 @@
-
 export interface ProjectTypeConfig {
   icon: string;
   label: string;
@@ -31,7 +30,9 @@ export const PROJECT_TYPE_CONFIG: Record<string, ProjectTypeConfig> = {
   },
 };
 
-export const getProjectTypeInfo = (projectType?: string[]): ProjectTypeConfig | null => {
+export const getProjectTypeInfo = (
+  projectType?: string[]
+): ProjectTypeConfig | null => {
   if (!projectType || projectType.length === 0) {
     return null;
   }

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { CardDescription, CardTitle } from '@/components/ui/card';
 import { FiArrowUpRight } from 'react-icons/fi';
-import { Project } from '@/lib/projects';
+import { CardDescription, CardTitle } from '@/components/ui/card';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
 import { StackBadges } from '@/components/ui/stack-badges';
+import type { Project } from '@/lib/projects';
 
 interface ProjectContentProps {
   project: Project;
@@ -11,11 +11,17 @@ interface ProjectContentProps {
   isHovered: (id: string) => boolean;
 }
 
-export const ProjectContent = ({ project, index, isHovered }: ProjectContentProps) => {
+export const ProjectContent = ({
+  project,
+  index,
+  isHovered,
+}: ProjectContentProps) => {
   return (
     <>
       <div className="flex justify-between items-start">
-        <div className={`flex flex-col ${project.description ? 'gap-2' : 'gap-0'}`}>
+        <div
+          className={`flex flex-col ${project.description ? 'gap-2' : 'gap-0'}`}
+        >
           <motion.div
             className="flex items-center gap-2"
             initial={{ opacity: 0, x: -20 }}
@@ -66,7 +72,11 @@ export const ProjectContent = ({ project, index, isHovered }: ProjectContentProp
             ease: 'easeOut',
           }}
         >
-          <StackBadges stacks={project.stacks} showAnimation={true} animationDelay={index * 0.1 + 0.3} />
+          <StackBadges
+            stacks={project.stacks}
+            showAnimation={true}
+            animationDelay={index * 0.1 + 0.3}
+          />
         </motion.div>
       </div>
     </>

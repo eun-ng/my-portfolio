@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
 import matter from 'gray-matter';
 import { cache } from 'react';
 
@@ -31,7 +31,7 @@ const getAllMarkdownFiles = cache(async (dir: string): Promise<string[]> => {
 
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
-    
+
     if (item.isDirectory()) {
       const subFiles = await getAllMarkdownFiles(fullPath);
       files.push(...subFiles);
@@ -80,42 +80,46 @@ export const getProjects = cache(async (): Promise<Project[]> => {
       return bDate.getTime() - aDate.getTime();
     });
   } catch (error) {
-    console.error('Markdown 파일 읽기 오류:', error);
+    console.error('Markdown 파일 읽기 오류: ', error);
     return [];
   }
 });
 
-export const getProjectBySlug = cache(async (slug: string): Promise<Project | null> => {
-  try {
-    const allFiles = await getAllMarkdownFiles(CONTENT_DIR);
+export const getProjectBySlug = cache(
+  async (slug: string): Promise<Project | null> => {
+    try {
+      const allFiles = await getAllMarkdownFiles(CONTENT_DIR);
 
-    const matchingFile = allFiles.find((file) => path.basename(file, '.md') === slug);
+      const matchingFile = allFiles.find(
+        (file) => path.basename(file, '.md') === slug
+      );
 
-    if (!matchingFile) {
+      if (!matchingFile) {
+        return null;
+      }
+
+      const fileContent = await fs.readFile(matchingFile, 'utf8');
+      const { data, content } = matter(fileContent);
+
+      const frontmatter = data as ProjectFrontmatter;
+
+      return {
+        id: slug,
+        title: frontmatter.title || '',
+        description: frontmatter.description || '',
+        stacks: frontmatter.stacks || [],
+        url: frontmatter.url,
+        github: frontmatter.github,
+        period: frontmatter.period || '',
+        projectType: frontmatter.projectType || [],
+        content,
+      };
+    } catch (error) {
+      console.error('프로젝트 파일 읽기 오류: ', error);
       return null;
     }
-
-    const fileContent = await fs.readFile(matchingFile, 'utf8');
-    const { data, content } = matter(fileContent);
-
-    const frontmatter = data as ProjectFrontmatter;
-
-    return {
-      id: slug,
-      title: frontmatter.title || '',
-      description: frontmatter.description || '',
-      stacks: frontmatter.stacks || [],
-      url: frontmatter.url,
-      github: frontmatter.github,
-      period: frontmatter.period || '',
-      projectType: frontmatter.projectType || [],
-      content,
-    };
-  } catch (error) {
-    console.error('프로젝트 파일 읽기 오류:', error);
-    return null;
   }
-});
+);
 
 export const getAllProjectSlugs = cache(async (): Promise<string[]> => {
   try {

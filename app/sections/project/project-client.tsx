@@ -1,22 +1,35 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Project } from '@/lib/projects';
-import useHoverCard from '@/hooks/useHoverCard';
 import { ProjectItem } from '@/components/ui/project-item';
+import useHoverCard from '@/hooks/useHoverCard';
+import type { Project } from '@/lib/projects';
 
 interface ProjectClientProps {
   projects: Project[];
 }
 
 const ProjectClient = ({ projects }: ProjectClientProps) => {
-  const { handleHoverStart, handleHoverEnd, isOtherHovered, isHovered, isDesktop } = useHoverCard();
+  const {
+    handleHoverStart,
+    handleHoverEnd,
+    isOtherHovered,
+    isHovered,
+    isDesktop,
+  } = useHoverCard();
 
   if (!projects || projects.length === 0) {
     return (
       <div className="text-center text-muted-foreground py-12">
         <div className="max-w-md mx-auto space-y-3">
           <div className="w-16 h-16 mx-auto rounded-full bg-muted/30 flex items-center justify-center">
-            <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-8 h-8 text-muted-foreground"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-label="No projects available"
+            >
+              <title>No projects available</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -52,7 +65,12 @@ const ProjectClient = ({ projects }: ProjectClientProps) => {
           onHoverStart={() => handleHoverStart(project.id)}
           onHoverEnd={handleHoverEnd}
         >
-          <ProjectItem project={project} index={index} isDesktop={isDesktop} isHovered={isHovered} />
+          <ProjectItem
+            project={project}
+            index={index}
+            isDesktop={isDesktop}
+            isHovered={isHovered}
+          />
         </motion.div>
       ))}
     </div>

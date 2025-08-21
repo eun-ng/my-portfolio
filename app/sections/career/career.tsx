@@ -32,7 +32,7 @@ const CAREER_INFO: CareerInfo[] = [
             채용 관리 솔루션(ATS) MVP 신규 개발
             <ul className="list-disc pl-5 mt-1 space-y-1">
               <li>디자인 시스템 설계 및 개발</li>
-              <li>Storbook 도입 {`→`} 컴포넌트 문서화 및 체계화</li>
+              <li>Storybook 도입 {`→`} 컴포넌트 문서화 및 체계화</li>
               <li>공통 컴포넌트, 레이아웃 설계 및 개발</li>
               <li>채용 flow 기능 개발</li>
               <li>채용과정 자동화 처리 칸반 보드 개발</li>

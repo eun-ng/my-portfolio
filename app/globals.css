@@ -68,6 +68,16 @@
 
   --social-icon-color: #d1d5db;
   --social-icon-hover: #f9fafb;
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+  
+  ::-moz-selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
 }
 
 .light {

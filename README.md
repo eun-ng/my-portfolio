@@ -9,7 +9,7 @@
 - **스타일링**: Tailwind CSS, shadcn/ui
 - **애니메이션**: Framer Motion
 - **배포**: Vercel
-- **폰트**: Pretendard
+- **품질 관리**: Biome
 
 ## ✨ 주요 기능
 

@@ -12,8 +12,7 @@ stacks:
   - 'shadcn/ui'
   - 'Framer Motion'
   - 'Vercel'
-  - 'ESLint'
-  - 'Prettier'
+  - 'Biome'
 process: 'Done'
 ---
 
@@ -35,7 +34,7 @@ Next.js 15와 TypeScript를 활용하여 구축한 개인 포트폴리오 사이
 - **애니메이션**: Framer Motion
 - **배포**: Vercel
 - **폰트**: Pretendard
-- **품질 관리**: ESLint, Prettier
+- **품질 관리**: Biome
 
 ## ✨ 주요 기능
 
@@ -47,9 +46,10 @@ Next.js 15와 TypeScript를 활용하여 구축한 개인 포트폴리오 사이
 
 ### 🎨 디자인 & UX
 
+- **다크/라이트 모드**: 사용자 선호에 따른 모드 전환
 - **반응형 디자인**: 모바일 우선 설계로 모든 디바이스 완벽 대응
 - **애니메이션**: Framer Motion 기반 인터랙션 효과
-- **일관된 타이포그래피**: Pretendard 폰트 사용으로 통일화
+- **일관된 타이포그래피**: Pretendard 사용으로 통일화
 - **shadcn/ui**: 일관된 디자인 시스템
 
 ### ⚡ 성능 최적화
@@ -62,7 +62,8 @@ Next.js 15와 TypeScript를 활용하여 구축한 개인 포트폴리오 사이
 ### 🔧 개발 경험
 
 - **TypeScript**: 타입 안정성 증가
-- **ESLint**: 코드 품질 및 일관성 유지
+- **Biome**: 빠른 린팅 및 포매팅
+- **pnpm**: 효율적인 패키지 관리
 - **App Router**: Next.js 15 App Router 활용한 폴더 구조 기반 라우팅
 - **Server Components**: 서버 컴포넌트로 성능 최적화
 
@@ -79,7 +80,9 @@ my-portfolio/
 ├── app/                      # Next.js App Router
 │   ├── components/
 │   │   ├── Analytics.tsx     # Google Analytics
-│   │   └── ScrollSpyNav.tsx  # 스크롤 스파이 네비게이션
+│   │   ├── Gnb.tsx           # 글로벌 네비게이션 바
+│   │   ├── ScrollSpyNav.tsx  # 스크롤 스파이 네비게이션
+│   │   └── ThemeProvider.tsx # 다크/라이트 테마 프로바이더
 │   ├── projects/[slug]/      # Dynamic Route 프로젝트 상세 페이지
 │   ├── sections/             # 페이지 섹션 컴포넌트
 │   │   ├── career/           # 경력 섹션

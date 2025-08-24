@@ -174,3 +174,13 @@ SEO 최적화와 성능 향상을 위한 정적 생성과 동적 라우팅 구�
 - 초기 로딩: Next.js 정적 생성으로 **평균 1초 이내 로딩**
 - 번들 크기: Notion SDK 제거로 JavaScript 번들 크기 **약 100KB 감소**
 - SEO 최적화: Google PageSpeed Insights **90점 이상**
+
+### Lighthouse 성능 점수 개선
+
+최적화 작업을 통해 Lighthouse 성능 점수를 크게 개선했습니다.
+
+**개선 전**
+![lighthouse_old.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/portfolio/lighthouse_old.webp)
+
+**개선 후**
+![lighthouse_new.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/portfolio/lighthouse_new.webp)

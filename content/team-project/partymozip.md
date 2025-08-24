@@ -75,7 +75,7 @@ process: 'Done'
 
 ## 프로젝트 개요
 
-![screenshot_1.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_1.png)
+![screenshot_1.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_1.webp)
 
 파티모집은 취미를 공유하는 파티 모집 웹 사이트 입니다.
 
@@ -93,9 +93,9 @@ process: 'Done'
 
 ### 메인 페이지
 
-![screenshot_1.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_1.png)
+![screenshot_1.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_1.webp)
 
-![screenshot_2.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_2.png)
+![screenshot_2.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_2.webp)
 
 > **설명**
 
@@ -115,7 +115,7 @@ process: 'Done'
 
 ### 로그인 페이지
 
-![screenshot_3.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_3.png)
+![screenshot_3.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_3.webp)
 
 > **설명**
 
@@ -125,7 +125,7 @@ process: 'Done'
 
 ### 관리자 페이지
 
-![screenshot_4.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_4.png)
+![screenshot_4.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_4.webp)
 
 > **설명**
 
@@ -145,7 +145,7 @@ process: 'Done'
 
 ### 파티 상세정보 모달 창
 
-![screenshot_5.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_5.png)
+![screenshot_5.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_5.webp)
 
 > **설명**
 
@@ -163,7 +163,7 @@ process: 'Done'
 
 ### 파티생성 페이지
 
-![screenshot_6.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_6.png)
+![screenshot_6.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_6.webp)
 
 > **설명**
 
@@ -179,7 +179,7 @@ process: 'Done'
 
 ### 파티메인 페이지 - 메인 탭
 
-![screenshot_7.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_7.png)
+![screenshot_7.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_7.webp)
 
 > **설명**
 
@@ -203,9 +203,9 @@ process: 'Done'
 
 ### 파티메인 페이지 - 파티관리 탭
 
-![screenshot_8.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_8.png)
+![screenshot_8.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_8.webp)
 
-![screenshot_9.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_9.png)
+![screenshot_9.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_9.webp)
 
 > **설명**
 
@@ -225,9 +225,9 @@ process: 'Done'
 
 ### 파티메인 페이지 - 일정 탭
 
-![screenshot_10.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_10.png)
+![screenshot_10.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_10.webp)
 
-![screenshot_11.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_11.png)
+![screenshot_11.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_11.webp)
 
 > **설명**
 
@@ -269,4 +269,4 @@ Notion을 이용하여 프로젝트 일정관리 및 진행상황을 공유했�
 
 일정관리는 구글문서의 엑셀 파일을 이용해 관리하다가 최종 일정을 노션으로 옮겨와 공유하였습니다.
 
-![screenshot_12.png](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_12.png)
+![screenshot_12.webp](https://pbnorsjxdmnytmjr.public.blob.vercel-storage.com/partymozip/screenshot_12.webp)

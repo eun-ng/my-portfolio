@@ -22,48 +22,52 @@ const CAREER_INFO: CareerInfo[] = [
     description: (
       <>
         <p className="text-pretty leading-relaxed">
-          프론트엔드 개발자로서 채용관리 솔루션(ATS), 인성검사 플랫폼, 기업용
-          채용 홈페이지 등 다양한 HR Tech 제품을 개발했습니다. 기획자, 디자이너,
-          PM과 긴밀히 협업하며 레거시 프로젝트 개선부터 신규 서비스 개발까지 전
-          과정에 참여하여 제품 고도화를 지속적으로 수행했습니다.
+          SaaS HR 솔루션 전문 기업 휴스테이션에서 프론트엔드 개발자로 근무하며,
+          레거시 프로젝트 개선부터 신규 서비스의 성공적인 MVP 론칭까지 제품의
+          전체 라이프사이클에 기여했습니다. 기획자, 디자이너, PM 등 다양한
+          직군과 긴밀하게 협업하며 사용자 경험 개선과 비즈니스 성장을
+          이끌었습니다.
         </p>
         <ul className="list-none pl-5 mt-2 space-y-4">
           <li>
-            채용 관리 솔루션(ATS) MVP 신규 개발
-            <ul className="list-disc pl-5 mt-1 space-y-1">
-              <li>디자인 시스템 설계 및 개발</li>
-              <li>Storybook 도입 {`→`} 컴포넌트 문서화 및 체계화</li>
-              <li>공통 컴포넌트, 레이아웃 설계 및 개발</li>
-              <li>채용 flow 기능 개발</li>
-              <li>채용과정 자동화 처리 칸반 보드 개발</li>
-            </ul>
-          </li>
-          <li>
-            채용 솔루션 FAIRY 개발
-            <ul className="list-disc pl-5 mt-1 space-y-1">
-              <li>JavaScript {`→`} TypeScript로 마이그레이션</li>
-              <li>공통 컴포넌트, 레이아웃 설계 및 개발</li>
-              <li>레거시 코드 리팩토링 & 신규 기능 개발</li>
-            </ul>
-          </li>
-          <li>
-            채용 솔루션 RAVIS 개발
-            <ul className="list-disc pl-5 mt-1 space-y-1">
-              <li>반응형 디자인으로 전환</li>
-              <li>공통 컴포넌트, 레이아웃 설계 및 개발</li>
-              <li>레거시 코드 리팩토링 & 신규 기능 개발</li>
-            </ul>
-          </li>
-          <li>
-            채용 솔루션 FAIRY 기업용 채용 홈페이지 마이그레이션
+            <strong>신규 ATS 솔루션 MVP 프론트엔드 리드</strong>
             <ul className="list-disc pl-5 mt-1 space-y-1">
               <li>
-                Next.js v13 pages router {`→`} v14 app router로 마이그레이션
+                분산된 기능들을 통합한 신규 채용 관리 솔루션의 프론트엔드 개발을
+                리드했습니다.
               </li>
-              <li>Turbopack 사용으로 로컬 개발 환경 속도 개선</li>
-              <li>이미지, 폰트 최적화 문제 개선</li>
-              <li>프리 렌더링 & SEO 개선</li>
-              <li>K6 활용한 부하테스트 진행</li>
+              <li>
+                자동화 칸반 보드 등 핵심 기능을 개발하여 채용 담당자의 업무
+                시간을 평균 40% 단축했습니다.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>개발 문화 개선 및 생산성 향상</strong>
+            <ul className="list-disc pl-5 mt-1 space-y-1">
+              <li>
+                Mantine UI 기반의{' '}
+                <strong>디자인 시스템을 주도적으로 구축</strong>하고
+                Storybook으로 문서화하여 팀의 개발 속도를 40% 향상시켰습니다.
+              </li>
+              <li>
+                레거시 JavaScript 코드를 <strong>TypeScript로 전면 전환</strong>
+                하여 코드 안정성을 확보하고 디버깅 시간을 단축했습니다.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>성능 최적화 및 최신 기술 도입</strong>
+            <ul className="list-disc pl-5 mt-1 space-y-1">
+              <li>
+                Next.js v14 App Router 마이그레이션을 통해{' '}
+                <strong>웹 페이지 로딩 속도를 50% 이상 개선</strong>하고 DX를
+                향상시켰습니다.
+              </li>
+              <li>
+                Turbopack 도입, 이미지/폰트 최적화, 부하 테스트(k6) 등을 통해
+                지속적으로 웹 성능을 개선하고 안정적인 서비스를 제공했습니다.
+              </li>
             </ul>
           </li>
         </ul>

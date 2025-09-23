@@ -24,7 +24,7 @@ export default function Home() {
         <div className="flex flex-col lg:gap-12 lg:text-left">
           <div className="flex flex-col">
             <h1 className="text-4xl lg:text-5xl metallic-text">남궁은</h1>
-            <h2 className="mt-2 text-lg lg:text-xl">Front End Developer</h2>
+            <h2 className="mt-2 text-lg lg:text-xl">Frontend Developer</h2>
             <p className="mt-4 text-sm text-muted-foreground">
               사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향합니다.
             </p>

@@ -25,7 +25,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: '남궁은 | Front End Developer',
+  title: '남궁은 | Frontend Developer',
   description:
     '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자 남궁은의 포트폴리오입니다.',
   keywords: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: '남궁은 | Front End Developer',
+    title: '남궁은 | Frontend Developer',
     description:
       '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
     url: 'https://eunng.com',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: '남궁은 - Front End Developer',
+        alt: '남궁은 - Frontend Developer',
       },
     ],
     locale: 'ko_KR',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '남궁은 | Front End Developer',
+    title: '남궁은 | Frontend Developer',
     description:
       '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
     images: ['/og-image.png'],

@@ -14,7 +14,7 @@ export interface CareerInfo {
 const CAREER_INFO: CareerInfo[] = [
   {
     id: '0',
-    jd: 'Front End Developer',
+    jd: 'Frontend Developer',
     company: '휴스테이션(Hustation)',
     url: 'https://www.hustation.com/',
     startDate: '2023.02',

@@ -19,8 +19,8 @@ const ProjectSectionWrapper = async () => {
 
 export default function Home() {
   return (
-    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 bg-background text-foreground lg:grid lg:grid-cols-2 lg:px-12 lg:py-0">
-      <div className="flex flex-col items-start lg:max-h-screen lg:justify-between lg:sticky lg:top-0 lg:py-24">
+    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 bg-background text-foreground lg:grid lg:grid-cols-2 lg:items-start lg:px-12 lg:py-0">
+      <div className="flex flex-col items-start lg:justify-between lg:sticky lg:top-[5rem] lg:h-[calc(100vh-5rem)] lg:py-24">
         <div className="flex flex-col lg:gap-12 lg:text-left">
           <div className="flex flex-col">
             <h1 className="text-4xl lg:text-5xl metallic-text">남궁은</h1>

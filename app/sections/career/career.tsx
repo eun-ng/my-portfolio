@@ -21,7 +21,7 @@ const CAREER_INFO: CareerInfo[] = [
     endDate: '2025.02',
     description: (
       <>
-        <p className="text-pretty leading-relaxed">
+        <p className="text-balance md:text-pretty leading-relaxed">
           SaaS HR 솔루션 전문 기업 휴스테이션에서 프론트엔드 개발자로 근무하며,
           레거시 프로젝트 개선부터 신규 서비스의 성공적인 MVP 론칭까지 제품의
           전체 라이프사이클에 기여했습니다. 기획자, 디자이너, PM 등 다양한

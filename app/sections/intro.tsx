@@ -1,7 +1,7 @@
 const IntroSection = () => {
   return (
     <div id="intro" className="space-y-4">
-      <p className="text-pretty leading-relaxed text-body-text">
+      <p className="text-balance md:text-pretty leading-relaxed text-body-text">
         안녕하세요,{' '}
         <span className="font-semibold text-accent">사용자 경험(UX)</span>과{' '}
         <span className="font-semibold text-accent">개발자 경험(DX)</span>의

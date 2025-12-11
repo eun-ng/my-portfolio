@@ -30,11 +30,11 @@ const CAREER_INFO: CareerInfo[] = [
         </p>
         <ul className="list-none pl-5 mt-2 space-y-4">
           <li>
-            <strong>신규 ATS 솔루션 MVP 프론트엔드 리드</strong>
+            <strong>신규 ATS 솔루션 MVP 프론트엔드 개발</strong>
             <ul className="list-disc pl-5 mt-1 space-y-1">
               <li>
-                분산된 기능들을 통합한 신규 채용 관리 솔루션의 프론트엔드 개발을
-                리드했습니다.
+                분산된 기능들을 통합한 신규 채용 관리 솔루션의 프론트엔드를
+                개발했습니다
               </li>
               <li>
                 자동화 칸반 보드 등 핵심 기능을 개발하여 채용 담당자의 업무

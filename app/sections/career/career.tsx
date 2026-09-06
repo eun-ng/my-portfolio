@@ -21,7 +21,7 @@ const CAREER_INFO: CareerInfo[] = [
     url: 'https://nanuriit.kr/',
     startDate: '2026.01',
     endDate: '현재',
-    stacks: ['Spring Boot', 'Oracle DB', 'Java', 'React', 'TypeScript'],
+    stacks: ['Spring Boot Framework', 'Oracle DB', 'Java'],
     description: (
       <>
         <p className="text-balance md:text-pretty leading-relaxed text-foreground/90">

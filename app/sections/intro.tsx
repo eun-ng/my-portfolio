@@ -18,8 +18,8 @@ const IntroSection = () => {
         <span className="font-semibold text-foreground">
           데이터의 흐름부터 화면의 완성도까지 책임지는
         </span>{' '}
-        개발자 남궁은입니다. B2B 솔루션에서 React와 TypeScript로 프론트엔드 개발
-        경험을 바탕으로, 현재는 차세대 증권 시스템을 개발하며{' '}
+        개발자 남궁은입니다. B2B 솔루션에서 React와 TypeScript를 활용한
+        프론트엔드 개발 경험을 바탕으로, 현재는 차세대 증권 시스템을 개발하며{' '}
         <span className="font-semibold text-primary">
           복잡한 금융 비즈니스 로직을 다루는 과정
         </span>

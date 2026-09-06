@@ -1,15 +1,15 @@
-# 포트폴리오
+# 남궁은 | 개발자 포트폴리오
 
-프론트엔드 개발자 남궁은의 개인 포트폴리오 사이트입니다.
+안정적인 시스템 아키텍처와 신뢰할 수 있는 금융 서비스를 지향하는 **원장 시스템 개발자 남궁은**의 포트폴리오 사이트입니다.
 
 ## 🚀 기술 스택
 
-- **프레임워크**: Next.js 15 (App Router)
-- **언어**: TypeScript
-- **스타일링**: Tailwind CSS, shadcn/ui
-- **애니메이션**: Framer Motion
-- **배포**: Vercel
-- **품질 관리**: Biome
+- **Backend**: Spring Boot, Java, Oracle DB
+- **Frontend**: React, Next.js 15 (App Router), TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **인터랙션/애니메이션**: Framer Motion, 3D Liquid Glass UI
+- **인프라 & 배포**: Vercel
+- **코드 품질**: Biome
 
 ## ✨ 주요 기능
 

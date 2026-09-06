@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import GoogleAnalytics from './components/Analytics';
 import Gnb from './components/Gnb';
+import { LiquidBackground } from './components/LiquidBackground';
 import ThemeProvider from './components/ThemeProvider';
 
 const pretendard = localFont({
@@ -25,19 +26,9 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: '남궁은 | Frontend Developer',
-  description:
-    '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자 남궁은의 포트폴리오입니다.',
-  keywords: [
-    '남궁은',
-    '프론트엔드',
-    'React',
-    'TypeScript',
-    'Next.js',
-    'Tailwind CSS',
-    '포트폴리오',
-    '개발자',
-  ],
+  title: '남궁은 | 포트폴리오',
+  description: '개발자 남궁은입니다.',
+  keywords: ['남궁은', '개발자', '소프트웨어 엔지니어', '프론트엔드', '백엔드'],
   authors: [{ name: '남궁은', url: 'https://github.com/eun-ng' }],
   creator: '남궁은',
   publisher: '남궁은',
@@ -51,17 +42,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: '남궁은 | Frontend Developer',
-    description:
-      '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
-    url: 'https://eunng.com',
+    title: '남궁은 | 개발자 포트폴리오',
+    description: '개발자 남궁은입니다.',
+    url: 'https://eun-ng.github.io/my-portfolio',
     siteName: '남궁은 포트폴리오',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: '남궁은 - Frontend Developer',
+        alt: '남궁은 - Developer',
       },
     ],
     locale: 'ko_KR',
@@ -69,9 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '남궁은 | Frontend Developer',
-    description:
-      '사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향하는 프론트엔드 개발자',
+    title: '남궁은 | 개발자 포트폴리오',
+    description: '개발자 남궁은입니다.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -100,7 +89,7 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning>
       <head />
       <body
-        className={`${pretendard.variable} antialiased font-sans bg-background text-foreground`}
+        className={`${pretendard.variable} antialiased font-sans text-foreground transition-colors duration-500`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -109,6 +98,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange={false}
         >
+          <LiquidBackground />
           <Gnb />
           {children}
           <GoogleAnalytics />

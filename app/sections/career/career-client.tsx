@@ -14,23 +14,17 @@ const CareerClient = ({ careerInfo }: { careerInfo: CareerInfo[] }) => {
   } = useHoverCard();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {careerInfo?.map((career: CareerInfo, index: number) => (
         <motion.div
           key={career.id}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{
-            opacity: isOtherHovered(career.id) ? 0.2 : 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.5,
-            delay: index * 0.1,
-            ease: 'easeOut',
-            opacity: { duration: 0.3 },
-          }}
-          onHoverStart={() => handleHoverStart(career.id)}
-          onHoverEnd={handleHoverEnd}
+          style={{ opacity: isOtherHovered(career.id) ? 0.3 : 1 }}
+          onMouseEnter={() => handleHoverStart(career.id)}
+          onMouseLeave={handleHoverEnd}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
         >
           <CareerItem
             career={career}

@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import ProjectSkeleton from '@/components/ui/project-skeleton';
 import { SOCIAL_ICONS } from '@/constants/icons';
 import { getProjects } from '@/lib/projects';
+import HeroInfo from './components/HeroInfo';
 import { ScrollSpyNav } from './components/ScrollSpyNav';
 import CareerSection from './sections/career/career';
 import IntroSection from './sections/intro';
@@ -19,19 +20,13 @@ const ProjectSectionWrapper = async () => {
 
 export default function Home() {
   return (
-    <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 bg-background text-foreground lg:grid lg:grid-cols-2 lg:items-start lg:px-12 lg:py-0">
-      <div className="flex flex-col items-start lg:justify-between lg:sticky lg:top-[5rem] lg:h-[calc(100vh-5rem)] lg:py-24">
+    <div className="mx-auto min-h-screen max-w-7xl px-6 py-12 text-foreground lg:grid lg:grid-cols-2 lg:items-start lg:px-12 lg:py-0">
+      <div className="flex flex-col items-start lg:justify-between lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:py-24">
         <div className="flex flex-col lg:gap-12 lg:text-left">
-          <div className="flex flex-col">
-            <h1 className="text-4xl lg:text-5xl metallic-text">남궁은</h1>
-            <h2 className="mt-2 text-lg lg:text-xl">Frontend Developer</h2>
-            <p className="mt-4 text-sm text-muted-foreground">
-              사용자를 위한 UX와 동료 개발자들을 위한 DX 개선을 지향합니다.
-            </p>
-          </div>
+          <HeroInfo />
           <ScrollSpyNav />
         </div>
-        <div className="mt-8 flex flex-row gap-4">
+        <div className="mt-8 flex flex-row gap-3">
           {SOCIAL_ICONS.map((item) => {
             return (
               <a
@@ -40,7 +35,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.label}
-                className="social-icon-hover transition-colors metallic-border p-2 rounded-lg inline-block lg:hover-glow lg:cursor-pointer"
+                className="text-muted-foreground hover:text-primary transition-colors duration-200 p-2 rounded-lg inline-flex items-center justify-center cursor-pointer"
               >
                 {item.icon}
               </a>

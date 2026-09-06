@@ -21,8 +21,9 @@ export const StackBadges = ({
       {stacks.map((stack, index) => (
         <motion.div
           key={stack}
-          initial={showAnimation ? { opacity: 0, scale: 0.8, y: 10 } : false}
-          animate={showAnimation ? { opacity: 1, scale: 1, y: 0 } : {}}
+          initial={showAnimation ? { opacity: 0, scale: 0.8, y: 8 } : false}
+          whileInView={showAnimation ? { opacity: 1, scale: 1, y: 0 } : {}}
+          viewport={{ once: true }}
           transition={
             showAnimation
               ? {
@@ -35,7 +36,7 @@ export const StackBadges = ({
         >
           <Badge
             variant="outline"
-            className="text-xs text-accent bg-accent/10 border border-accent/30 px-1.5 py-0.5 rounded-md"
+            className="text-xs text-slate-600 dark:text-slate-300 bg-white/20 dark:bg-white/5 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-sm px-2 py-0.5 rounded-md font-medium"
           >
             {stack}
           </Badge>

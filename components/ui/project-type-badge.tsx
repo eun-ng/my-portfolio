@@ -15,7 +15,7 @@ export const ProjectTypeBadge = ({ projectType }: ProjectTypeBadgeProps) => {
   return (
     <Badge
       variant="outline"
-      className={`text-xs ${typeInfo.textColor} ${typeInfo.bgColor} border ${typeInfo.borderColor} px-2 py-0.5 flex-shrink-0 h-fit`}
+      className="text-xs text-primary dark:text-blue-400 bg-white/20 dark:bg-white/5 backdrop-blur-2xl shadow-sm border border-white/50 dark:border-white/10 px-2 py-0.5 shrink-0 h-fit rounded-md"
     >
       {typeInfo.icon} {typeInfo.label}
     </Badge>

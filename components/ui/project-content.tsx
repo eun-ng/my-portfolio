@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { ArrowUpRight } from 'lucide-react';
 import { CardDescription, CardTitle } from '@/components/ui/card';
 import { ProjectTypeBadge } from '@/components/ui/project-type-badge';
 import { StackBadges } from '@/components/ui/stack-badges';
@@ -22,62 +22,28 @@ export const ProjectContent = ({
         <div
           className={`flex flex-col ${project.description ? 'gap-2' : 'gap-0'}`}
         >
-          <motion.div
-            className="flex items-center gap-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              delay: index * 0.1,
-              duration: 0.5,
-              ease: 'easeOut',
-            }}
-          >
+          <div className="flex items-center gap-2">
             <CardTitle className="text-lg">{project.title}</CardTitle>
             <ProjectTypeBadge projectType={project.projectType} />
-          </motion.div>
+          </div>
           {project.description && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.1 + 0.1,
-                duration: 0.4,
-                ease: 'easeOut',
-              }}
-            >
+            <div>
               <CardDescription>{project.description}</CardDescription>
-            </motion.div>
+            </div>
           )}
         </div>
         <motion.div
           animate={{
-            y: isHovered(project.id) ? -6 : 0,
-            opacity: isHovered(project.id) ? 1 : 0.5,
+            y: isHovered(project.id) ? -4 : 0,
+            opacity: isHovered(project.id) ? 1 : 0.4,
           }}
-          transition={{
-            duration: 0.2,
-            ease: 'easeOut',
-          }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
         >
-          <FiArrowUpRight size={16} />
+          <ArrowUpRight size={16} className="text-muted-foreground" />
         </motion.div>
       </div>
       <div className="pt-3">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: index * 0.1 + 0.3,
-            duration: 0.4,
-            ease: 'easeOut',
-          }}
-        >
-          <StackBadges
-            stacks={project.stacks}
-            showAnimation={true}
-            animationDelay={index * 0.1 + 0.3}
-          />
-        </motion.div>
+        <StackBadges stacks={project.stacks} showAnimation={false} />
       </div>
     </>
   );

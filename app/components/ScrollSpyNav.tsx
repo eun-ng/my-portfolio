@@ -8,15 +8,9 @@ const scrollToSection = (sectionId: SectionId) => {
   if (!element) return;
 
   if (sectionId === 'intro') {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 };
 
@@ -27,28 +21,24 @@ export const ScrollSpyNav = () => {
 
   const getButtonClassName = (isActive: boolean) =>
     cn(
-      'group relative flex items-center text-sm px-4 py-2 w-full cursor-pointer transition-all duration-300 rounded-lg',
-      'hover-glow metallic-border',
+      'flex items-center gap-3 text-sm py-2.5 pl-4 w-full cursor-pointer transition-all duration-200 border-l-2 rounded-r-sm',
       isActive
-        ? 'bg-gradient-to-r from-primary/20 to-accent/10 border-primary text-foreground scale-105 shadow-lg shadow-primary/20'
-        : 'text-muted-foreground lg:hover:text-foreground lg:hover:scale-102'
+        ? 'border-primary text-foreground font-medium'
+        : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
     );
 
-  const getIndicatorClassName = (isActive: boolean) =>
+  const getDotClassName = (isActive: boolean) =>
     cn(
-      'w-2 h-2 rounded-full mr-3 transition-all duration-300',
-      isActive
-        ? 'bg-primary shadow-lg shadow-primary/50 animate-pulse'
-        : 'bg-muted-foreground/40 lg:group-hover:bg-muted-foreground'
+      'w-1.5 h-1.5 rounded-full transition-all duration-200 shrink-0',
+      isActive ? 'bg-primary scale-110' : 'bg-muted-foreground/40'
     );
 
   return (
-    <nav className="hidden lg:block max-w-[200px]">
+    <nav className="hidden lg:block">
       <span className="sr-only">페이지 네비게이션</span>
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-1">
         {NAVIGATION_SECTIONS.map((section) => {
           const isActive = activeSection === section.id;
-
           return (
             <li key={section.id}>
               <button
@@ -57,13 +47,8 @@ export const ScrollSpyNav = () => {
                 aria-current={isActive ? 'page' : undefined}
                 type="button"
               >
-                <div className={getIndicatorClassName(isActive)} />
-                <span className="font-medium tracking-wide">
-                  {section.label}
-                </span>
-                {isActive && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-lg animate-pulse" />
-                )}
+                <div className={getDotClassName(isActive)} />
+                <span className="tracking-wide">{section.label}</span>
               </button>
             </li>
           );

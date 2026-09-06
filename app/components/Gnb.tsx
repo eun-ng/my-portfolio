@@ -1,6 +1,6 @@
 'use client';
+import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
 const Gnb = () => {
   const { theme, setTheme } = useTheme();
@@ -12,13 +12,13 @@ const Gnb = () => {
   return (
     <div className="flex justify-end py-2 px-4 lg:p-4">
       <button
-        className="cursor-pointer p-3 dark:text-gray-200 light:text-gray-800 text-xl w-12 h-12 flex items-center justify-center opacity-100 transition-opacity duration-200"
+        className="cursor-pointer w-12 h-12 flex items-center justify-center rounded-full bg-white/70 dark:bg-white/5 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-sm text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 hover:scale-105 active:scale-95 transition-all duration-300"
         onClick={handleChange}
         type="button"
         aria-label="Toggle theme"
       >
-        <MdDarkMode className="block dark:hidden" />
-        <MdLightMode className="hidden dark:block" />
+        <Moon className="block dark:hidden w-5 h-5" />
+        <Sun className="hidden dark:block w-5 h-5" />
       </button>
     </div>
   );

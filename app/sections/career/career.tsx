@@ -18,7 +18,7 @@ const CAREER_INFO: CareerInfo[] = [
     id: '1',
     jd: '원장 개발자',
     company: '나누리IT',
-    url: '#',
+    url: 'https://nanuriit.kr/',
     startDate: '2026.01',
     endDate: '현재',
     stacks: ['Spring Boot', 'Oracle DB', 'Java', 'React', 'TypeScript'],
